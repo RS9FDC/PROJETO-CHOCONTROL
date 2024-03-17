@@ -1,6 +1,5 @@
 # Chocontrol
 
-![Chocontrol Logo]
 
 ## Descrição
 
