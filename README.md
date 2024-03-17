@@ -30,15 +30,6 @@ Chocontrol é um projeto que tem como objetivo otimizar a produção e minimizar
 
 4. Veja os resultados exibidos na tela.
 
-## Contribuição
-
-Contribuições são bem-vindas! Se você deseja contribuir com o desenvolvimento deste projeto, siga estes passos:
-
-1. Fork o projeto.
-2. Crie uma nova branch (`git checkout -b feature/nova-funcionalidade`).
-3. Faça commit das suas alterações (`git commit -am 'Adicionar nova funcionalidade'`).
-4. Faça push para a branch (`git push origin feature/nova-funcionalidade`).
-5. Abra um Pull Request.
 
 ## Licença
 
