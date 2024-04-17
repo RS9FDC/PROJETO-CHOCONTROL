@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body style="display: flex;">
+    <div>
+        <canvas id="myChart" style= "position: relative; height:30vh; width:30vw "></canvas>
+    </div>
+    <div>
+        <canvas id="myChart2" style="position: relative; height:30vh; width:30vw "></canvas>
+    </div>
+</body>
+<script>
+    const labels = [
+        'Maquina 1',
+        'Maquina 2',
+        'Maquina 3',
+        'Maquina 4',
+    ];
+    const labels1 = [
+        '12:50',
+        '12:51',
+        '12:52',
+        '12:53',
+        '12:54',
+        '12:55',
+    ];
+
+    const data = {
+        labels: labels1,
+        datasets: [{
+            label: 'Temperatura',
+            backgroundColor: 'red',
+            borderColor: 'red',
+            data: [22, 22, 22, 22, 22, 22],
+        },{
+            label: 'Umidade',
+            backgroundColor: 'green',
+            borderColor: 'green',
+            data: [15, 19, 19, 30, 20, 50],
+        }
+        ,{
+            label: 'Umidade',
+            backgroundColor: 'red',
+            borderColor: 'red',
+            data:  [18, 18, 18, 18, 18, 18],
+        }
+    ]
+    };
+    const data1 = {
+    labels: labels,
+    datasets: [{
+            label: 'Tempo acima da Temperatura Ideal',
+            backgroundColor: '#b17e57',
+            borderColor: '#b17e57',
+            data: [50, 10, 20, 45, 30, 40],
+        },
+        
+    ] 
+};
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+    const config2 = {
+        type: 'bar',
+        data: data1,
+        options: {
+            indexAxis: 'y',
+        }
+    };
+</script>
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+</script>
+
+</html>
