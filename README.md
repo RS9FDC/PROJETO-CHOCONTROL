@@ -1,4 +1,4 @@
-# Chocontrol
+# Somos Chocontrol, a solução que você procura 🍫
 
 
 ## Descrição
@@ -8,14 +8,15 @@ Chocontrol é um projeto que tem como objetivo otimizar a produção e minimizar
 ## Funcionalidades
 
 - Escolha entre os tipos de chocolate: Amargo, Branco ou ao Leite.
-- Insira a temperatura média da leva de chocolate.
+- Análise de gráficos de monitoramento de temperatura.
+- Insira a temperatura ideal para a sua leva de chocolate.
 - Informe a quantidade de chocolate sendo produzida.
 - Defina o preço do chocolate por quilo.
 - Calcule a produção de chocolate levando em conta a temperatura e possíveis perdas.
 
-## Tecnologias Utilizadas
+## Linguagens Utilizadas
 
-- HTML5
+- HTML5 
 - CSS3
 - JavaScript
 
@@ -23,7 +24,7 @@ Chocontrol é um projeto que tem como objetivo otimizar a produção e minimizar
 
 1. Clone o repositório:
 
-2. Abra o arquivo `index.html` em seu navegador.
+2. Abra o arquivo `.html` em seu navegador.
 
 3. Preencha os campos e clique em "Calcular produção de chocolate".
 
@@ -34,7 +35,4 @@ Chocontrol é um projeto que tem como objetivo otimizar a produção e minimizar
 
 Este projeto está licenciado sob a [MIT License](link_para_license.md).
 
-## Contato
-
-Para mais informações, entre em contato em Chocontrol@sptech.school
 
