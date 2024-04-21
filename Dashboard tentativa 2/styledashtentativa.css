@@ -1,0 +1,116 @@
+*{
+    margin: 0; 
+    padding: 0; 
+}
+
+body{
+    display: flex;
+    min-height: 100vh;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    background-image: url("backimg_dash.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 100vh;
+    color: black;
+    font-size: 25px;
+}
+
+
+ul{
+    list-style: none;
+    text-align: center;
+    justify-content: center;
+    padding: 50px;
+    cursor: pointer;
+}
+
+
+li{
+    margin-right: 10px;
+    cursor: pointer;
+    
+}
+
+.logo{
+    width: 30px;
+    display: flex;
+    margin-top: 40px;
+    margin-left: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fotoUsuario{
+    align-items: center;
+
+}
+.foto{
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 30px;
+    justify-content: space-around;
+    margin-right: 1rem;
+    margin-left: 1rem;
+ 
+}
+
+.descricao {
+    font-size: 15px;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+}
+
+#usuario_informacoes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_A, .div_B, .div_C, .div_D{
+    background-color: rgba(228, 165, 113, 0.503);
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 18px;
+    border: 2px solid black;
+    flex-grow: 1;
+    margin: 0 5px;
+    /* width: calc(25% - 20px);  */
+    width: 25%;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.graficoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* margin-top: 40px; */
+    padding: 20px;
+}
+
+.graficoLinha, .graficoColuna{
+    /* position: relative; */
+    height: 30vh;
+    width: 30vw;
+}
+
+
+
+
+
+
