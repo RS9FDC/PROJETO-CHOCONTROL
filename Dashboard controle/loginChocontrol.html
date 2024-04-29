@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/stylelogin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">    
+</head>
+
+<body>
+    <div id="login" class="login">
+        <img src="./assets/logo.png" alt="logo" class="logo">
+        <h1>Login</h1>
+        <br><br>
+
+        Insira seu e-mail <br> <input type="text" id="input_email" placeholder="E-mail"> <br><br>
+        Insira sua senha <br> <input type="password" id="input_senha" placeholder="Senha"> <br><br>
+
+       <div id="div_textoContainer" class="textoContainer">
+        <button onclick="manterLogin()" class="manterLogin_btn"></button><span class="manterLoginTexto"> Manter login</span>
+        <span class="esqueceuSenhaTexto">Esqueceu a senha?</span>
+       </div>
+
+        <button onclick="iniciar()">Iniciar Sessão</button>
+        <br><br>
+        <p>Não possui conta? <a href="#">Cadastre-se</a></p>
+
+
+    </div>
+
+</body>
+</html>
+<script>
+    function iniciar() {
+        var email= input_email.value;
+        var senha= input_senha.value;
+
+
+        var validarArroba = email.indexOf('@') !== -1;
+        var validarEmail = email.endsWith (".com");
+        
+        
+
+        if(!validarArroba || !validarEmail){
+            alert("Digite um email válido!");
+            input_email.value= "";
+        }
+        else if(senha.length <= 6){
+            alert("Para segurança, digite uma senha com mais de 6 dígitos!");
+            input_senha.value = "";
+        }
+        else{
+            window.location.href = "./dashboard/dashControle.html"
+        }
+        
+    }
+
+
+</script>
+
