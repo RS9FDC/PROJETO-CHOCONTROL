@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleCadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="shortcut icon" type="imagex/png"
+        href="C:\Users\ruand\OneDrive\Área de Trabalho\FACULDADE\ALGORITMOS\Logo-_icon_.ico">
+    <title>Cadastre-se | Chocontrol</title>
+</head>
+
+<body>
+    <main id="container">
+        <form id="cadastro_form">
+            <div id="form_header">
+                <h1>Cadastro do Funcionario</h1>
+            </div>
+
+
+            <div id="inputs">
+                <div id="input-box">
+                    <label for="codigo">
+                        Codigo da Empresa
+                        <div class="input-field">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="text" id="input_codEmpresa" placeholder="03241AB">
+                        </div>
+                    </label>
+                </div>
+
+
+            <div id="inputs">
+                <div id="input-box">
+                    <label for="User">
+                        Nome do Funcionario
+                        <div class="input-field">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="input_user"  placeholder="Nome Completo">
+                        </div>
+                    </label>
+                </div>
+
+                        <div id="input-box">
+                            <label for="email">
+                                Email
+                                <div class="input-field">
+                                    <i class="fa-regular fa-envelope"></i>
+                                    <input type="email" id="input_email">
+                                </div>
+                            </label>
+                        </div>
+
+
+                        <div id="input-box">
+                            <label for="password">
+                                Senha
+                                <div class="input-field">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input type="password" id="input_password">
+                                </div>
+                            </label>
+                        </div>
+
+                        <div id="input-box">
+                            <label for="ConfirmPassword">
+                                Confirme sua senha
+                                <div class="input-field">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input type="password" id="input_Confpassword">
+                                </div>
+                            </label>
+                        </div>
+                    </div> 
+
+
+
+
+
+
+
+
+
+                    <button onclick="botao()" type="submit" id="cadastro_button">Cadastre-se</button>
+        </form>
+    </main>
+</body>
+
+</html>
+
+<script>
+
+
+    function botao(){
+        var empresa = input_codEmpresa.value
+        var email = input_email.value
+        var senha = input_password.value
+        var Confsenha = input_Confpassword.value
+
+        var tam_usuario = usuario.length
+
+        var cod = empresa.length
+
+        if (cod < 8) {
+            alert('Insira o Codigo da empresa corretamente')
+        }
+
+        var email_pcom = email.endsWith(".com")
+        var email_arroba = email.indexOf('@')
+
+        if (email_pcom != true || email_arroba < 0) {
+            alert('Seu email deve conter o caracter "@" e terminar com ".com"')
+        }
+
+        var tam_senha = senha.length
+
+        if (tam_senha <= 6) {
+            alert('Coloque uma senha com 6 ou mais caracteres')
+        }
+        if (Confsenha != senha) {
+            alert('Confirmação de senha está errada')
+        }
+
+    }
+</script>
