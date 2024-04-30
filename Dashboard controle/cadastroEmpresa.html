@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Empresa | Chocontrol</title>
+    <link rel="stylesheet" href="./css/styleCadastros.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">    
+</head>
+
+<body>
+    <div id="cadastro" class="cadastro">
+        <img src="./assets/logo.png" alt="logo" class="logo">
+        <h1>Cadastro empresa</h1>
+        <br><br>
+        
+        Nome da empresa <br> <input type="text" id="input_nomeEmpresa" placeholder="Nome da empresa"> 
+        Telefone <br> <input type="text" id="input_telefone" placeholder="Telefone"> 
+        CNPJ <br> <input type="text" id="input_cnpj" placeholder="CNPJ"> 
+        E-mail<br> <input type="text" id="input_email" placeholder="E-mail"> 
+        CEP <br> <input type="text" id="input_cep" placeholder="CEP"> 
+        Número <br> <input type="text" id="input_numero" placeholder="Número"> 
+        Complemento <br> <input type="text" id="input_complemento" placeholder="Complemento"> 
+        <button onclick="iniciar()">Cadastre-se</button>
+
+    </div>
+
+</body>
+</html>
+<script>
+    function iniciar() {
+        var empresa = input_nomeEmpresa.value;
+        var telefone = input_telefone.value;
+        var cnpj = input_cnpj.value;
+        var email = input_email.value;
+        var cep = input_cep.value;
+        var num = input_numero.value;
+        var complemento = input_complemento.value;
+
+
+       
+        var email_pcom = email.endsWith(".com");
+        var email_arroba = email.indexOf('@');
+        var tamanho_telefone = telefone.length;
+        var tamanho_cnpj = cnpj.length;
+        var tamanho_cep = cep.length
+
+        if(tamanho_telefone !== 11){
+            alert('Digite um número de telefone válido');
+        }
+
+        else if(tamanho_cnpj !== 18){
+            alert('Digite um CNPJ válido');
+        }
+
+       else if (email_pcom != true || email_arroba < 0) {
+            alert('Seu email deve conter o caracter "@" e terminar com ".com"');
+        }
+
+       else if (tamanho_cep !== 9){
+        alert('Digite um CEP válido');
+       }
+
+        else{
+            alert('Cadastro realizado com sucesso! Aguarde nossa empresa entrar em contato')
+        }
+
+    }
+
+</script>
+

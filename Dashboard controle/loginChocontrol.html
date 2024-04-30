@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="./css/stylelogin.css">
+    <title>Login | Chocontrol</title>
+    <link rel="stylesheet" href="./css/styleLogin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -19,8 +19,8 @@
         <img src="./assets/logo.png" alt="logo" class="logo">
         <h1>Login</h1>
         <br><br>
-
-        Insira seu e-mail <br> <input type="text" id="input_email" placeholder="E-mail"> <br><br>
+        
+        Insira o código da empresa <br> <input type="text" id="input_codigo" placeholder="Código"> <br><br>
         Insira sua senha <br> <input type="password" id="input_senha" placeholder="Senha"> <br><br>
 
        <div id="div_textoContainer" class="textoContainer">
@@ -30,8 +30,6 @@
 
         <button onclick="iniciar()">Iniciar Sessão</button>
         <br><br>
-        <p>Não possui conta? <a href="#">Cadastre-se</a></p>
-
 
     </div>
 
@@ -39,21 +37,17 @@
 </html>
 <script>
     function iniciar() {
-        var email= input_email.value;
+        var codigo= input_codigo.value;
         var senha= input_senha.value;
+        var tamanho_codigo = codigo.length
 
 
-        var validarArroba = email.indexOf('@') !== -1;
-        var validarEmail = email.endsWith (".com");
-        
-        
-
-        if(!validarArroba || !validarEmail){
-            alert("Digite um email válido!");
-            input_email.value= "";
+        if(tamanho_codigo < 8){
+            alert("Digite um código válido!");
+            input_codigo.value= "";
         }
         else if(senha.length <= 6){
-            alert("Para segurança, digite uma senha com mais de 6 dígitos!");
+            alert("Senha inválida");
             input_senha.value = "";
         }
         else{
