@@ -12,13 +12,14 @@ Chocontrol é um projeto que tem como objetivo otimizar a produção e minimizar
 - Insira a temperatura ideal para a sua leva de chocolate.
 - Informe a quantidade de chocolate sendo produzida.
 - Defina o preço do chocolate por quilo.
-- Calcule a produção de chocolate levando em conta a temperatura e possíveis perdas.
+- Calcule as possiveis perdas na produção de chocolate com o uso da nossa calculadora.
 
 ## Linguagens Utilizadas
 
 - HTML5 
 - CSS3
 - JavaScript
+- C++ 
 
 ## Como Usar
 
