@@ -35,7 +35,7 @@ a {
 }
 
 .navbar button {
-    padding: 10px 20px 10px 30px;
+    padding: 10px 20px 10px 20px;
     border-radius: 100px;
     border: none;
     background-color: black;
@@ -250,6 +250,10 @@ a {
     align-items: center;
     justify-content: center;
 }
+.imgInsta{
+    height: 43px;
+    margin-bottom: -7px;
+}
 
 .redes span {
     font-size: 25px;
@@ -275,7 +279,24 @@ a {
 .email {
     font-size: 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.email img {
+    width: 30px;
+    margin-right: 2px;
+}
+
+.telefone img {
+    width: 30px;
+}
+
+.telefone {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
