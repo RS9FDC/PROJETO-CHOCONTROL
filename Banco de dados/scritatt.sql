@@ -57,7 +57,7 @@ temperaturaMaxima DECIMAL (3,1),
 temperaturaMinima DECIMAL (3,1),
 fkSensor char(10) not null, 
 constraint fkintervaloTemperaturaSensor foreign key (fkSensor)
-references tbSensor (idSensor)
+references tbsensor (idSensor)
 );
 
 
@@ -68,7 +68,7 @@ dataHoraLeva datetime,
 picoTemperatura decimal(3,1),
 fkSensor char(10) not null,
 constraint fkMonitoramentoSensor foreign key (fkSensor)
-references tbSensor (idSensor)
+references tbsensor (idSensor)
 );
 
 
