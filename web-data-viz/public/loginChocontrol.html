@@ -20,7 +20,7 @@
         <h1>Login</h1>
         <br><br>
         
-        Insira o código da empresa <br> <input type="text" id="input_codigo" placeholder="Código"> <br><br>
+        Insira o código da empresa <br> <input type="text" id="email_input" placeholder="Código"> <br><br>
         Insira sua senha <br> <input type="password" id="input_senha" placeholder="Senha"> <br><br>
 
        <div id="div_textoContainer" class="textoContainer">
@@ -28,7 +28,7 @@
         <span class="esqueceuSenhaTexto">Esqueceu a senha?</span>
        </div>
 
-        <button onclick="iniciar()">Iniciar Sessão</button>
+        <button onclick="entrar()">Iniciar Sessão</button>
         <br><br>
 
     </div>
@@ -36,24 +36,92 @@
 </body>
 </html>
 <script>
-    function iniciar() {
-        var codigo= input_codigo.value;
-        var senha= input_senha.value;
-        var tamanho_codigo = codigo.length
+    // function iniciar() {
+    //     var codigo= input_codigo.value;
+    //     var senha= input_senha.value;
+    //     var tamanho_codigo = codigo.length
 
 
-        if(tamanho_codigo < 8){
-            alert("Digite um código válido!");
-            input_codigo.value= "";
-        }
-        else if(senha.length <= 6){
-            alert("Senha inválida");
-            input_senha.value = "";
-        }
-        else{
-            window.location.href = "./dashboard/dashIndex.html"
-        }
+    //     if(tamanho_codigo < 8){
+    //         alert("Digite um código válido!");
+    //         input_codigo.value= "";
+    //     }
+    //     else if(senha.length <= 6){
+    //         alert("Senha inválida");
+    //         input_senha.value = "";
+    //     }
+    //     else{
+    //         window.location.href = "./dashboard/dashIndex.html"
+    //     }
         
+    // }
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
     }
 
 
