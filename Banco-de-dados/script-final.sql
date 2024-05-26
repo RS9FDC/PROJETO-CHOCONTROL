@@ -3,7 +3,7 @@ CREATE DATABASE chocontrol;
 USE chocontrol;
 
 CREATE TABLE Empresa(
-	idEmpresa CHAR(10) PRIMARY KEY NOT NULL
+	empresaId CHAR(10) PRIMARY KEY NOT NULL
     ,nome VARCHAR(50) 
     ,telefone CHAR(14)
     ,email VARCHAR(256)
