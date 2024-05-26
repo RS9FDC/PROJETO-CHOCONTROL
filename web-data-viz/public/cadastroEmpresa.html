@@ -27,58 +27,100 @@
         CEP <br> <input type="text" id="input_cep" placeholder="CEP"> 
         Número <br> <input type="text" id="input_numero" placeholder="Número"> 
         Complemento <br> <input type="text" id="input_complemento" placeholder="Complemento"> 
-        <button onclick="iniciar()">Cadastre-se</button>
+        <button onclick="cadastrar()">Cadastre-se</button>
 
     </div>
 
 </body>
 </html>
 <script>
-    function iniciar() {
-        var empresa = input_nomeEmpresa.value;
-        var telefone = input_telefone.value;
-        var cnpj = input_cnpj.value;
-        var email = input_email.value;
-        var cep = input_cep.value;
-        var num = input_numero.value;
-        var complemento = input_complemento.value;
+    function cadastrar() {
+    aguardar();
 
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var empresaVar = listaEmpresas.value
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      empresaVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
 
-       
-        var email_pcom = email.endsWith(".com");
-        var email_arroba = email.indexOf('@');
-        var tamanho_telefone = telefone.length;
-        var tamanho_cnpj = cnpj.length;
-        var tamanho_cep = cep.length
-
-        if(tamanho_telefone !== 11){
-            alert('Digite um número de telefone válido');
-        }
-
-        else if(tamanho_cnpj !== 18){
-            alert('Digite um CNPJ válido');
-        }
-
-       else if (email_pcom != true || email_arroba < 0) {
-            alert('Seu email deve conter o caracter "@" e terminar com ".com"');
-        }
-
-       else if (tamanho_cep !== 9){
-        alert('Digite um CEP válido');
-       }
-
-        else{
-            alert('Cadastro realizado com sucesso! Aguarde nossa empresa entrar em contato');
-            input_nomeEmpresa.value= "";
-            input_telefone.value= "";
-            input_cnpj.value= "";
-            input_email.value= "";
-            input_cep.value= "";
-            input_numero.value= "";
-            input_complemento.value= "";
-        }
-
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
     }
 
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        empresaServer: empresaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
 </script>
 
