@@ -87,7 +87,9 @@ a{
     display: flex;
     justify-content: end;
     align-items: end;
+  
 }
+
 
 #linha-vertical {
     width: 200px;
@@ -262,5 +264,64 @@ a{
     margin-bottom: 10px;
 }
 
+
+.modal {
+    display: none;
+    /* position: fixed; */
+    z-index: 1;
+    left: 0;
+    top: 0;
+    /* width: 100%;
+    height: 100%; */
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #763737; /* cor do modal */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    display: flex;
+    /* flex-direction: column;
+    align-items: center; */
+  }
+  
+  .close {
+    color: #aaa; /* cor do X para fechar */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black; /* fica preto quando clica no X*/
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  #contentSection{
+      background-color: #a618a1;
+      margin-bottom: 20px;
+  }
+
+  #newContent {
+    margin-top: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+#newContent input{
+    width: 10%;
+}
+
+#confirmAddBtn{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    background-color: #fff;
+}
 
 
