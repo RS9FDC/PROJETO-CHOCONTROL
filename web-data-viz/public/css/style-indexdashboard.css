@@ -256,10 +256,11 @@ a{
     border: 1px solid #DBDBDB;
     max-width: 300px;
     width: 50%;
-
-
 }
 
+.card p {
+    margin-bottom: 10px;
+}
 
 
 
