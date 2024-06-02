@@ -36,14 +36,14 @@
 </html>
 <script>
   function cadastrar() {
-    aguardar();
+  
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var empresaId = req.body.empresaServer;
+    var nomeVar = input_nomeEmpresa;
+    var emailVar = input_email.value;
+    // var senhaVar = senha_input.value;
+    // var empresaId = req.body.empresaServer;
     var telefoneVar = input_telefone.value
     var cnpjVar = input_cnpj.value
     var cepVar = input_cep.value
@@ -53,8 +53,8 @@
     if (
       nomeVar == "" ||
       emailVar == "" ||
-      senhaVar == "" ||
-      empresaVar == "" ||
+      // senhaVar == "" ||
+      // empresaVar == "" ||
       telefoneVar == "" ||
       cnpjVar == "" ||
       cepVar == "" ||
@@ -82,8 +82,8 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        senhaServer: senhaVar,
-        empresaServer: empresaVar,
+        // senhaServer: senhaVar,
+        // empresaServer: empresaVar,
        telefoneServer: telefoneVar,
         cnpjServer: cnpjVar, 
         cepServer: cepVar,
