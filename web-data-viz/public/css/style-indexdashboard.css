@@ -324,4 +324,82 @@ a{
     background-color: #fff;
 }
 
+.containerBobIA {
+    position: fixed;
+    bottom: 20px;
+    right: 60px;
+    z-index: 1; 
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.bobIA i {
+    font-size: 60px;
+    cursor: pointer;
+}
+
+.modalBobIA {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    /* z-index: 1; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 550px;
+    background-color: #b17e57;
+    color: #000;
+    border-radius: 10px;
+  }
+
+
+.modalBobIA h1{
+    font-size: 36px;
+    text-align: center;
+    margin: 10px;
+}
+
+.modalBobIA textarea{
+    width: 80%;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.modalBobIA h3{
+    font-size: 30px;
+    text-align: center;
+    margin: 20px;
+}
+
+.modalBobIA button{
+    background-color: #5d4532;
+    color: black;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.modalBobIA .close{
+    color: #000; /* Cor branca */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+
+
+
+  
+
+
 
