@@ -3,7 +3,7 @@ CREATE DATABASE chocontrol;
 USE chocontrol;
 
 CREATE TABLE Empresa(
-	empresaId CHAR(10) PRIMARY KEY NOT NULL
+	empresaId INT PRIMARY KEY auto_increment
     ,nome VARCHAR(50) 
     ,telefone CHAR(14)
     ,email VARCHAR(256)
@@ -11,15 +11,15 @@ CREATE TABLE Empresa(
     ,cep CHAR(9)
     ,numero VARCHAR(20)
     ,complemento VARCHAR(45)
-);
+)auto_increment = 1025;
 
 CREATE TABLE funcionario(
 	idFuncionario CHAR(12)
     ,nome VARCHAR(50)
     ,senha CHAR(8)
     ,email VARCHAR(256)
-    ,fkEmpresa  CHAR(10) 
-    , FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
+    ,fkEmpresa INT 
+    , FOREIGN KEY (fkEmpresa) REFERENCES Empresa(empresaId)
     ,PRIMARY KEY (idFuncionario,fkEmpresa)
 );
 
@@ -35,9 +35,9 @@ CREATE TABLE Maquina(
 	idMaquina CHAR (10) PRIMARY KEY
     ,modeloMaquina VARCHAR(40)
     ,saborChocolate VARCHAR(30)
-    ,fkEmpresa CHAR(10)
+    ,fkEmpresa INT
     ,fkintervaloTemperatura INT
-    ,FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
+    ,FOREIGN KEY (fkEmpresa) REFERENCES Empresa(empresaId)
     ,FOREIGN KEY (fkIntervaloTemperatura) REFERENCES IntervaloTemperatura(idIntervaloTemperatura)
 );
     
@@ -58,6 +58,5 @@ CREATE TABLE Monitoramento (
 );
 
 
-INSERT INTO Empresa VALUES ('3021AB12','Cacau Show','(11)97114-5072','cacaushow@outlook.com','00000000000000','01414-001','2568',NULL);
-
+-- INSERT INTO Empresa VALUES ('3021AB12','Cacau Show','(11)97114-5072','cacaushow@outlook.com','00000000000000','01414-001','2568',NULL);
 SELECT * FROM Empresa;
