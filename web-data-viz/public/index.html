@@ -271,11 +271,11 @@
     if (receitaPerdida <= 0 && perdaTotal != 1 && teste == 0) {
 
         div_Result02.innerHTML = `Parabéns, devido ao bom controle de temperatura você pode faturar até R$${ReceitaFinal} em vendas de chocolate!`;
-        div_Result03.innerHTML = `O bom controle de temperatura é fundamental no processo de fabricação do chocolate, principalmente na etapa de conchagem em que, um grau fora da temperatura ideal pode prejudicar todo este processo <br><br>`
+        div_Result03.innerHTML = `O bom controle de temperatura é fundamental no processo de fabricação do chocolate, principalmente na etapa de conchagem em que, um grau fora da temperatura ideal pode prejudicar todo este processo. <br><br>`
 
     } else if ((receitaPerdida > 0 || perdaTotal == 1) && teste == 0) {
 
-        div_Result02.innerHTML = `Infelizmente, devido à falta de controle térmico, seu negócio perdeu ${QtdChocolate} KG em chocolates. Podendo faturar até R$${Receitapotencial} caso houvesse um melhor monitoramento térmico`;
+        div_Result02.innerHTML = `Infelizmente, devido à falta de controle térmico, seu negócio perdeu ${QtdChocolate} KG em chocolates. Podendo faturar até R$${Receitapotencial} caso houvesse um melhor monitoramento térmico.`;
 
         div_Result03.innerHTML = `Manter uma temperatura constante e adequada é essencial para garantir que o chocolate atinja a textura desejada e desenvolva seu sabor característico. Quando a temperatura não é controlada adequadamente durante a conchagem, podem ocorrer problemas como textura granulada, separação de gordura ou alterações no sabor. Portanto, o bom controle térmico não apenas garante a qualidade do produto final, mas também é fundamental para a consistência e a excelência do chocolate.`;
 

@@ -121,10 +121,8 @@ a{
 
 
 #logo {
-    width: 100%;
-
- 
-
+    width: 450px;
+    margin-left: -85px;
     
 }
 
@@ -267,6 +265,7 @@ a{
 
 
 .modal {
+    background-image: url("./../assets/backgroundimage.jpeg");
     display: none;
     /* position: fixed; */
     z-index: 1;
@@ -278,7 +277,9 @@ a{
   }
   
   .modal-content {
-    background-color: #763737; /* cor do modal */
+    background-image: url("./../assets/backgroundimage.jpeg");
+    /* background-color: #763737; */
+     /* cor do modal */
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
