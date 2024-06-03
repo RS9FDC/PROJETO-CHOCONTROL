@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acompanhamento | Chocontrol</title>
+    <title>Chocontrol | Acompanhamento</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styleDashControle.css">
     <link rel="stylesheet" href="../css/style-indexdashboard.css">
@@ -28,7 +28,7 @@
         <div id="sidebar">
             <!-- opcoes de navegação -->
 
-           <img src="../assets/CHOCONTROL.svg" id="logo" alt="">
+           <img src="../assets/logoAtualizado.png" id="logo" alt="">
 
 
 
@@ -71,30 +71,30 @@
         <!-- menu horizontal -->
         <div id="menucima" style="margin-top: 2rem;">
             <main id="main" >
-                <h1 id="bem-vindo" style="font: Antic Didone; font-size: 20px;width: 100%; ">Olá, Fernando.</h1>
+                <span id="bem-vindo" style="font: Antic Didone; font-size: 20px;width: 100%; ">Olá, Fernando.</span>
             </main>
 
-            <div id="pesquisa">
+            <!-- <div id="pesquisa">
                 <input type="text" placeholder="Pesquisar" id="pesq">
                 <i class="fa-solid fa-magnifying-glass" color="#422919;"
                     style="  font-size: 25px;"></i>
-            </div>
+            </div> -->
 
 
 
             <div id="confgs" style="  display: flex; ">
 
-                <div id="icons" style="  flex-grow: 1; display: flex; justify-content: start;  margin-left: 3rem ">
+                <!-- <div id="icons" style="  flex-grow: 1; display: flex; justify-content: start;  margin-left: 3rem ">
                     <i class="fa-solid fa-bell" id="icons"
                         style="color: #422919; margin-left: 1rem; font-size: 30px; width: fit-content"></i>
                     <i class="fa-solid fa-envelope" id="icons"
                         style="color: #422919; font-size: 30px; width: fit-content"></i>
                     <i class="fa-solid fa-moon" id="icons"
                         style="color: #422919; font-size: 30px; width: fit-content"></i>
-                </div>
+                </div> -->
 
 
-                <div id="usu" style="display: flex; flex-direction: row; width: 60%;  margin-left: 3rem; ">
+                <div id="usu" style="display: flex; flex-direction: row; width: 60%;  margin-left: 50rem; ">
                     <img id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
 
 
@@ -111,23 +111,23 @@
 
         <div class="dash">
             <div class="container">
-                <div class="cards" style="margin-left: 2%;">
+                <!-- <div class="cards" style="margin-left: 2%;">
                     <p >Responsável da Leva:</p>
                     <p>Fernando Brandão</p>
-                </div>
+                </div> -->
 
-                <div class="cards">
-                    <p>Temperatura Atual:</p>
+                <div class="cards" style="margin-left: 115px;">
+                    <p>Temperatura atual:</p>
                     <p  style="color: #BF1700; font-size: 25px;">97°C</p>
                 </div>
 
                 <div class="cards">
-                    <p>Estado da Leva:</p>
+                    <p>Estado da leva:</p>
                     <p  style="color: #BF1700; font-size: 25px;">Critico</p>
                 </div>
 
                 <div class="cards">
-                    <p>Tipo do Chocolate</p>
+                    <p>Tipo de chocolate:</p>
                     <p>Branco</p>
                 </div>
 
@@ -138,11 +138,11 @@
    <!-- onde o grafico é colocado no html -->
 
             <div class="graficosContainer">
-                <div class="graficoColuna">
+                <!-- <div class="graficoColuna">
                     <canvas id="myChart2" style="position: relative; height:30vh; width:30vw"></canvas>
-                </div>
+                </div> -->
                 <div id="graficoLinha">
-                <section style="position: relative; height:30vh; width:30vw">
+                <section style="height:30vh; width:30vw; margin-left: 400px;">
                     <canvas id="lm35Temperatura"></canvas>
                 </section>
             </div>

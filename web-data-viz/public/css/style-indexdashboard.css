@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap'); */
 
 * {
     margin: 0;
@@ -121,10 +121,8 @@ a{
 
 
 #logo {
-    width: 100%;
-
- 
-
+    width: 450px;
+    margin-left: -85px;
     
 }
 
@@ -171,6 +169,7 @@ a{
 
 #foto {
     display: flex;
+    flex-direction: row-reverse;
     width: 50px;
     height: 50px;
     object-fit: cover;
@@ -266,6 +265,7 @@ a{
 
 
 .modal {
+    background-image: url("./../assets/backgroundimage.jpeg");
     display: none;
     /* position: fixed; */
     z-index: 1;
@@ -277,7 +277,9 @@ a{
   }
   
   .modal-content {
-    background-color: #763737; /* cor do modal */
+    background-image: url("./../assets/backgroundimage.jpeg");
+    /* background-color: #763737; */
+     /* cor do modal */
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -303,7 +305,7 @@ a{
   
   #contentSection{
       background-color: #a618a1;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
   }
 
   #newContent {
@@ -323,5 +325,101 @@ a{
     width: 20%;
     background-color: #fff;
 }
+
+.containerBobIA {
+    position: fixed;
+    bottom: 20px;
+    right: 60px;
+    z-index: 1; 
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.bobIA i {
+    font-size: 60px;
+    cursor: pointer;
+}
+
+.modalBobIA {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    /* z-index: 1; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 550px;
+    background-color: #b17e57;
+    color: #000;
+    border-radius: 10px;
+  }
+
+
+.modalBobIA h1{
+    font-size: 36px;
+    text-align: center;
+    margin: 10px;
+}
+
+.modalBobIA textarea{
+    width: 80%;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.modalBobIA h3{
+    font-size: 30px;
+    text-align: center;
+    margin: 20px;
+}
+
+.modalBobIA button{
+    background-color: #5d4532;
+    color: black;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.modalBobIA .close{
+    color: #000; /* Cor branca */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.graficoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    margin-top: 100px;
+    height: 50%;
+}
+
+.graficoLinha{
+    flex-direction: row;
+    height: 300px;
+    /* margin: 0 10px; */
+    margin: 50px;
+}
+
+
+
+
+
+
+
+  
+
 
 

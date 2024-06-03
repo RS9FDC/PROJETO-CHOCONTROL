@@ -11,7 +11,8 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style-indexdashboard.css">
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.1/css/boxicons.min.css">
+    <title>Chocontrol | Dashboard</title>
 </head>
 
 <body>
@@ -23,19 +24,21 @@
         <div id="sidebar">
             <!-- opcoes de navegação -->
 
-            <img src="../assets/CHOCONTROL.svg" id="logo" alt="">
+            <img src="../assets/logoAtualizado.png" id="logo" alt="">
 
 
 
             <ul id="itens">
                 <li class="itensmenu active">
                     <a href="dashIndex.html">
-                        <i class="fa-solid fa-chart-line" style="color: #422919;  margin-left: 2rem; margin-right: 2rem;">Dashboard</i>
+                        <i class="fa-solid fa-chart-line"
+                            style="color: #422919;  margin-left: 2rem; margin-right: 2rem;">Dashboard</i>
                         <div id="linha-vertical"></div>
                     </a>
                 </li>
                 <li class="itensmenu "><a href="dashControle.html">
-                        <i class="fa-solid fa-table" style="color: #422919;  margin-left: 2rem; margin-right: 2rem;">Acompanhamento</i>
+                        <i class="fa-solid fa-table"
+                            style="color: #422919;  margin-left: 2rem; margin-right: 2rem;">Acompanhamento</i>
                     </a></li>
             </ul>
 
@@ -49,7 +52,7 @@
                 </p>
 
 
-               <a href="../index.html"><i class="fa-solid fa-arrow-right-from-bracket"></i></a> 
+                <a href="../index.html"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #000;" ></i></a>
                 <span class="itensmenu"></span>
 
             </div>
@@ -67,30 +70,30 @@
                 <h1 id="bem-vindo" style="font: Antic Didone; font-size: 20px;width: 100%; ">Olá, Fernando.</h1>
             </main>
 
-            <div id="pesquisa">
+            <!-- <div id="pesquisa">
                 <input type="text" placeholder="Pesquisar" id="pesq">
                 <i class="fa-solid fa-magnifying-glass" color="#422919;" style="  font-size: 25px;"></i>
-            </div>
+            </div> -->
 
 
 
             <div id="confgs" style="  display: flex; ">
 
-                <div id="icons" style="  flex-grow: 1; display: flex; justify-content: start;  margin-left: 3rem ">
+                <!-- <div id="icons" style="  flex-grow: 1; display: flex; justify-content: start;  margin-left: 3rem ">
                     <i class="fa-solid fa-bell" id="icons"
                         style="color: #422919; margin-left: 1rem; font-size: 30px; width: fit-content"></i>
                     <i class="fa-solid fa-envelope" id="icons"
                         style="color: #422919; font-size: 30px; width: fit-content"></i>
                     <i class="fa-solid fa-moon" id="icons"
                         style="color: #422919; font-size: 30px; width: fit-content"></i>
-                </div>
+                </div> -->
 
 
-                <div id="usu" style="display: flex; flex-direction: row; width: 60%;  margin-left: 3rem; ">
+                <div id="usu" style="display: flex; flex-direction: row; width: 60%;  margin-left: 50rem; ">
                     <img id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
 
 
-                    <i style="margin-top: 1rem; display: flex;" class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" style="margin-top: 1rem; display: flex; color: #000;" ></i>
                 </div>
 
 
@@ -106,7 +109,9 @@
 
             <div class="container">
                 <div class="card">
-                  <a href="dashControle.html"><p style="color: #BF1700;">Leva 1 em estado crítico</p></a> 
+                    <a href="dashControle.html">
+                        <p style="color: #BF1700;">Leva 1 em estado crítico</p>
+                    </a>
                     <p>Máquina: 6421350</p>
                     <p>Tipo de chocolate: Branco</p>
                     <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: 97°C</p>
@@ -135,7 +140,7 @@
                     <p>Tipo de chocolate: Ao leite</p>
                     <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: 23°C</p>
                 </div>
-                
+
                 <div class="card">
                     <p style="color: #E48F1E;">Leva 5 em estado de alerta</p>
                     <p>Máquina: 78498952</p>
@@ -160,26 +165,26 @@
                 <div class="card">
                     <p>Adicionar máquina</p>
 
-                <div id="contentSection">
-                    <!-- Aqui é onde as novas divs serão adicionadas -->
-                  </div>
-                  
-                  <button id="addContentBtn">Adicionar</button>
-                  
-                  <!-- Modal para adicionar novo conteúdo (opcional) -->
-                  <div id="myModal" class="modal">
-                    <div class="modal-content">
-                      <span class="close">&times;</span>
-                      <label for="newContentNumMaquina">Número da máquina:</label>
-                      <input type="text" id="newContentNumMaquina">
-                      <label for="newContentTipoChoco">Tipo de chocolate:</label>
-                      <input type="text" id="newContentTipoChoc">
-                      <button id="confirmAddBtn">Adicionar</button>
+                    <div id="contentSection">
+                        <!-- Aqui é onde as novas divs serão adicionadas -->
                     </div>
-                  </div>
-                  
-                  <script src="script.js"></script>
-                </div>  
+
+                    <button id="addContentBtn">Adicionar</button>
+
+                    <!-- Modal para adicionar novo conteúdo (opcional) -->
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <label for="newContentNumMaquina">Número da máquina:</label>
+                            <input type="text" id="newContentNumMaquina">
+                            <label for="newContentTipoChoco">Tipo de chocolate:</label>
+                            <input type="text" id="newContentTipoChoc">
+                            <button id="confirmAddBtn">Adicionar</button>
+                        </div>
+                    </div>
+
+                    <script src="script.js"></script>
+                </div>
 
             </div>
         </div>
@@ -256,7 +261,15 @@
         </div>
 
 
+        <div class="containerBobIA">
+            <div class="bobIA" onclick="showModal()">
+                <i class='bx bxs-message-square-add' ></i>
 
+            </div>
+            <div id="modalBobIA" class="modalBobIA">
+                <span class="close" onclick="hideModal()">&times;</span>
+            </div>
+        </div>
 
 
     </div>
@@ -265,7 +278,7 @@
 
 
 
-    <script src="js/script.js"></script>
+    <!-- <script src="js/script.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -275,6 +288,64 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+    <script>
+        var modalContentAdded = false; // Variável para verificar se o conteúdo já foi adicionado ao modal
+
+        function showModal() {
+            var modal = document.getElementById("modalBobIA");
+            modal.style.display = "block";
+
+            // Verifica se o conteúdo já foi adicionado ao modal
+            if (!modalContentAdded) {
+                modal.innerHTML += ` <h1 id="modalTitle">BobIA | Suporte N3</h1>
+            <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+            <button onclick="gerarResposta()" id="botao">Gerar Resposta</button>
+            <h3 id="respIA"> Resposta da IA: </h3>
+            <div id="resposta"></div>`;
+
+                modalContentAdded = true; // Define que o conteúdo foi adicionado
+            }
+
+            // FECHA O MODAL AO SER CLICADO DENTRO DO MODAL
+            window.addEventListener('click', function (event) {
+                var modal = document.getElementById('modalBobIA');
+                var modalContent = document.querySelector('.modal-content');
+
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        function hideModal() {
+            var modal = document.getElementById("modalBobIA");
+            modal.style.display = "none";
+        }
+
+
+        async function gerarResposta() {
+            const pergunta = document.getElementById('pergunta').value;
+
+            const response = await fetch('/perguntar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pergunta })
+            });
+
+            const data = await response.json();
+
+            resposta.style.display = 'block';
+            document.getElementById('resposta').innerText = data.resultado;
+        }
+
+    </script>
+
+
+
+
 </body>
 
 </html>
