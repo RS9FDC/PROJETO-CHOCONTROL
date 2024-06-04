@@ -24,10 +24,21 @@ body {
 
 }
 
+.titulo{
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    }
 
 .titulo h1{
     justify-content: center;
     text-align: center;
+    margin-top: 80px;
+}
+
+.titulo img{
+    width: 55px;
+    height: 55px;
     margin-top: 80px;
 }
 

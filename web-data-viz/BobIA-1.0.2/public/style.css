@@ -1,51 +1,103 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #63B1BC;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
-#container {
-    width: 80%;
-    margin: 50px auto;
+body {
+    background-color: #d5a886;
+    color: white;
+    /* overflow-y: hidden; */
+}
+
+.esquerda {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-image: url(./assets/backgroundimage.jpeg);
+}
+
+.itens a {
+    list-style: none;
+    text-decoration: none;
+}
+
+.maior {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.titulo {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+}
+
+span{
+    display: flex;
+    flex-direction: row;
+    /* padding: 35px; */
+    font-size: 20px;
+    
+}
+
+.titulo h1 {
+    justify-content: center;
     text-align: center;
+    margin-top: 80px;
 }
 
-h1 {
-    color: #1F2A44;
+.titulo img {
+    width: 55px;
+    height: 55px;
+    margin-top: 80px;
 }
 
-textarea[type="text"] {
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 5px;
-    width: 400px;
+.pergunta {
+    display: flex;
+    margin-top: 150px;
+    align-items: center;
+
 }
 
-select,
-button {
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
+.pergunta textarea {
+    width: 30vw;
+    height: 50px;
+    /* background-color: #dfd9d6; */
+    border-radius: 10px;
+    align-items: center;
 }
 
-button {
-    background-color: #ED145B;
-    color: #FFFFFF;
-    border: none;
+.pergunta textarea::placeholder {
+    text-align: center;
+
 }
 
-button:hover {
-    background-color: #EFB661;
+.inputs span {
+    font-size: 20px;
+    margin: 10px;
 }
 
-#resposta {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #D0D3D4;
-    border: 1px solid #63666A;
-    text-align: left;
-    display: none;
+
+.pergunta button {
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    /* margin: 10px; */
+    border-radius: 100%;
+    background-color: #763737;
+    color: #fff;
+    float: right;
+}
+
+
+.resposta h3 {
+    margin-top: 30px;
+    margin: 30px;
 }
