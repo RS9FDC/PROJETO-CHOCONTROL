@@ -114,7 +114,46 @@ function cadastrar(req, res) {
     }
 }
 
+
+function cadastrarFunc(req, res) {
+    console.log(req.body)
+    console.log(req.file)
+
+
+    // Se chegou até aqui, significa que o arquivo foi enviado
+    const foto = req.file.filename;
+    const {empresa, email,senha } = req.body;
+    const usuario = {empresa,email,senha,foto };
+    console.log(usuario)
+    console.log(foto)
+
+    // Faça as validações dos valores
+    if (!foto || !empresa || !email || !senha) {
+        return res.status(400).send("Todos os campos são obrigatórios!");
+    } 
+    else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarFunc(usuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarFunc
 }

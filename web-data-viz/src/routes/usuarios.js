@@ -8,8 +8,19 @@ router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
 
+
+router.post('/cadastroFuncionario', upload.single('foto'), (req, res) => {
+    usuarioController.cadastrarFunc(req, res);
+});
+
 router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
+
+// Rota para renderizar a página inicial
+router.get("", (req, res) => {
+    res.render("index");
+});
+
 
 module.exports = router;
