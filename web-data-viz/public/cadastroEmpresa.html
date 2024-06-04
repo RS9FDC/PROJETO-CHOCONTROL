@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./css/styleCadastros.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
@@ -36,14 +37,14 @@
 </html>
 <script>
   function cadastrar() {
-    aguardar();
+  
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var empresaId = req.body.empresaServer;
+    var nomeVar = input_nomeEmpresa.value;
+    var emailVar = input_email.value;
+    // var senhaVar = senha_input.value;
+    // var empresaId = req.body.empresaServer;
     var telefoneVar = input_telefone.value
     var cnpjVar = input_cnpj.value
     var cepVar = input_cep.value
@@ -53,23 +54,24 @@
     if (
       nomeVar == "" ||
       emailVar == "" ||
-      senhaVar == "" ||
-      empresaVar == "" ||
+      // senhaVar == "" ||
+      // empresaVar == "" ||
       telefoneVar == "" ||
       cnpjVar == "" ||
       cepVar == "" ||
       numeroVar == "" ||
       complementoVar == ""
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      // cardErro.style.display = "block";
+      // mensagem_erro.innerHTML =
+      //   "(Mensagem de erro para todos os campos em branco)";
 
-      finalizarAguardar();
+      // finalizarAguardar();
       return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+    } 
+    // else {
+    //   setInterval(sumirMensagem, 5000);
+    // }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -82,8 +84,8 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        senhaServer: senhaVar,
-        empresaServer: empresaVar,
+        // senhaServer: senhaVar,
+        // empresaServer: empresaVar,
        telefoneServer: telefoneVar,
         cnpjServer: cnpjVar, 
         cepServer: cepVar,
@@ -95,24 +97,24 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          // cardErro.style.display = "block";
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          // mensagem_erro.innerHTML =
+          //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
           setTimeout(() => {
-            window.location = "login.html";
+            window.location = "cadastroFuncionario.html";
           }, "2000");
 
           limparFormulario();
-          finalizarAguardar();
+          // finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+        // finalizarAguardar();
       });
 
     return false;
@@ -134,7 +136,7 @@
       });
   }
 
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
+  // function sumirMensagem() {
+  //   cardErro.style.display = "none";
+  // }
 </script>
