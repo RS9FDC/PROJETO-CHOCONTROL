@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-
+const upload = require('..//config/configUpload');
 var usuarioController = require("../controllers/usuarioController");
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
@@ -9,7 +9,7 @@ router.post("/cadastrar", function (req, res) {
 })
 
 
-router.post('/cadastroFuncionario', upload.single('foto'), (req, res) => {
+router.post('/cadastrarFuncionario', upload.single('foto'), (req, res) => {
     usuarioController.cadastrarFunc(req, res);
 });
 

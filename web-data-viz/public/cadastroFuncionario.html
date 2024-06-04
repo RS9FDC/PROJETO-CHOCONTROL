@@ -20,15 +20,15 @@
         <img src="./assets/logo.png" alt="logo" class="logo">
         <h1>Cadastro funcionário</h1>
         <br><br>
-        Código da empresa <br> <input type="file" id="input_foto">
-        Código da empresa <br> <input type="text" id="input_codEmpresa" placeholder="Código">
-        Nome completo <br> <input type="text" id="input_nome" placeholder="Nome">
-        Email <br> <input type="text" id="input_email" placeholder="E-mail">
-        Insira sua senha <br> <input type="password" id="input_password" placeholder="Senha">
+        <input type="file" id="foto" name="foto" required>
+        <!-- Código da empresa <br> <input type="text" id="input_codEmpresa" placeholder="Código"> -->
+        Nome completo <br> <input type="text" id="nome" placeholder="Nome">
+        Email <br> <input type="text" id="email" placeholder="E-mail">
+        Insira sua senha <br> <input type="password" id="senha" placeholder="Senha">
         Confirmação de senha <br> <input type="password" id="input_confPassword" placeholder="Confirmação de senha">
 
 
-        <button onclick="iniciar()">Cadastre-se</button>
+        <button onclick="cadastrarFuncionario()">Cadastre-se</button>
 
     </div>
 
@@ -36,87 +36,89 @@
 
 </html>
 <script>
-    function iniciar() {
-        var foto = input_foto.value;
-        var empresa = input_codEmpresa.value;
-        var email = input_email.value;
-        var senha = input_password.value;
-        var confSenha = input_confPassword.value;
+    // function iniciar() {
+    //     var foto = foto.files;
+    //     var nome = nome.value
+    //     var email = email.value;
+    //     var senha = senha.value;
+    //     var confSenha = input_confPassword.value;
 
 
-        var cod = empresa.length;
-        var email_pcom = email.endsWith(".com");
-        var email_arroba = email.indexOf('@');
-        var tam_senha = senha.length;
+    //     var cod = empresa.length;
+    //     var email_pcom = email.endsWith(".com");
+    //     var email_arroba = email.indexOf('@');
+    //     var tam_senha = senha.length;
 
-        if (cod < 8) {
-            alert('Insira um código válido');
-        }
+    //     if (cod < 8) {
+    //         alert('Insira um código válido');
+    //     }
 
-        else if (email_pcom != true || email_arroba < 0) {
-            alert('Seu email deve conter o caracter "@" e terminar com ".com"');
-        }
+    //     else if (email_pcom != true || email_arroba < 0) {
+    //         alert('Seu email deve conter o caracter "@" e terminar com ".com"');
+    //     }
 
-        else if (tam_senha <= 6) {
-            alert('Coloque uma senha com 6 ou mais caracteres');
-        }
+    //     else if (tam_senha <= 6) {
+    //         alert('Coloque uma senha com 6 ou mais caracteres');
+    //     }
 
-        else if (confSenha != senha) {
-            alert('Digite a senha correta');
-        }
+    //     else if (confSenha != senha) {
+    //         alert('Digite a senha correta');
+    //     }
 
-        else {
-            window.location.href = 'D:/projeto pi - Copia/web-data-viz/public/loginChocontrol.html';
+    //     else {
 
-            cadastrarFuncionario()
-        }
+    //         cadastrarFuncionario();
+    //     }
 
-    }
+    // }
 
     function cadastrarFuncionario() {
-        // aguardar();
+
+       
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
 
-        var foto = input_foto.value;
-        var empresa = input_codEmpresa.value;
-        var email = input_email.value;
-        var senha = input_password.value;
-        var confSenha = input_confPassword.value;
-
-
-
-        if (
-            foto == "" ||
-            empresa == "" ||
-            email == "" ||
-            senha == "" ||
-            confSenha == "" 
-           
-        ) {
-            cardErro.style.display = "block";
-            mensagem_erro.innerHTML =
-                "(Mensagem de erro para todos os campos em branco)";
-
-            //   finalizarAguardar();
-            return false;
-        } else {
-            setInterval(sumirMensagem, 5000);
-        }
+        // var foto = foto.value;
+        // var nome = nome.value;
+        // var email = email.value;
+        // var senha = senha.value;
+        // var confSenha = input_confPassword.value;
+        // console.log(foto)
 
         const formData = new FormData();
         formData.append('foto', foto.files[0])
-        formData.append('empresa', empresa.value)
+        formData.append('nome', nome.value)
         formData.append('email', email.value)
         formData.append('senha', senha.value)
 
         console.log(senha.value)
 
 
+        if (
+            foto == "" ||
+            nome == "" ||
+            email == "" ||
+            senha == ""
+        ) {
+            // cardErro.style.display = "block";
+            // mensagem_erro.innerHTML =
+            //     "(Mensagem de erro para todos os campos em branco)";
+
+            alert('Mensagem de erro para todos os campos em branco')
+
+            //   finalizarAguardar();
+            return false;
+        // } else {
+        //     setInterval(sumirMensagem, 5000);
+        }
+
+       
+
+
 
         // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
+        fetch("/usuarios/cadastrarFuncionario", {
             method: "POST",
             body: formData
         })
@@ -124,7 +126,7 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    cardErro.style.display = "block";
+                    // cardErro.style.display = "block";
 
                     alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
                     // mensagem_erro.innerHTML =
@@ -134,7 +136,7 @@
                         window.location = "login.html";
                     }, "2000");
 
-                    limparFormulario();
+                    // limparFormulario();
                     // finalizarAguardar();
                 } else {
 
@@ -152,8 +154,8 @@
 
 
 
-    function sumirMensagem() {
-        cardErro.style.display = "none";
-    }
-
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none";
+    // }
+    //}
 </script>

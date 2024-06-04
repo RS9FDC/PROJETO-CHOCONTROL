@@ -119,16 +119,19 @@ function cadastrarFunc(req, res) {
     console.log(req.body)
     console.log(req.file)
 
+    // var senha = req.body.senhaServer;
+    // var email = req.body.emailServer;
+
 
     // Se chegou até aqui, significa que o arquivo foi enviado
     const foto = req.file.filename;
-    const {empresa, email,senha } = req.body;
-    const usuario = {empresa,email,senha,foto };
+    const {nome, email,senha } = req.body;
+    const usuario = {nome,email,senha,foto };
     console.log(usuario)
     console.log(foto)
 
     // Faça as validações dos valores
-    if (!foto || !empresa || !email || !senha) {
+    if (!foto || !nome || !email || !senha) {
         return res.status(400).send("Todos os campos são obrigatórios!");
     } 
     else {
