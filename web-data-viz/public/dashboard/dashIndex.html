@@ -25,23 +25,32 @@
         <div id="sidebar">
             <!-- opcoes de navegação -->
 
-            <img src="../assets/logoAtualizado.png" id="logo" alt="">
+            <a href="./../index.html"><img src="../assets/logoAtualizado.png" id="logo" alt=""></a>
 
 
 
             <ul id="itens">
                 <li class="itensmenu active">
                     <a href="dashIndex.html">
-                        <i class="fa-solid fa-chart-line"
-                            style="color: #422919;  margin-left: 2rem; margin-right: 2rem;">Dashboard</i>
+                        <i class="fa-solid fa-chart-line" style="color: #000; margin-right: 1rem;"> Dashboard</i>
                         <div id="linha-vertical"></div>
                     </a>
                 </li>
-                <li class="itensmenu "><a href="dashControle.html">
-                        <i class="fa-solid fa-table"
-                            style="color: #422919;  margin-left: 2rem; margin-right: 2rem;">Acompanhamento</i>
-                    </a></li>
+
+                <li class="itensmenu active">
+                    <a href="dashControle.html">
+                        <i class="fa-solid fa-table" style="color: #000; margin-right: 1rem;"> Acompanhamento</i>
+                        <div id="linha-vertical"></div>
+                    </a>
+                </li>
+
+                <li class="itensmenu active">
+                    <a href="https://projetochocontrol.atlassian.net/servicedesk/customer/portal/1">
+                        <i class="fa-solid fa-headset" style="color: #000; margin-right: 2rem;"> Abrir chamado</i>
+                    </a>
+                </li>
             </ul>
+
 
             <!-- foto de fundo usuario -->
             <div id="fotousuario">
@@ -53,7 +62,7 @@
                 </p>
 
 
-                <a href="../index.html"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #000;" ></i></a>
+                <a href="../index.html"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #000;"></i></a>
                 <span class="itensmenu"></span>
 
             </div>
@@ -94,7 +103,7 @@
                     <img id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
 
 
-                    <i class="fa-solid fa-chevron-down" style="margin-top: 1rem; display: flex; color: #000;" ></i>
+                    <i class="fa-solid fa-chevron-down" style="margin-top: 1rem; display: flex; color: #000;"></i>
                 </div>
 
 
@@ -184,7 +193,7 @@
                         </div>
                     </div>
 
-                    <script src="script.js"></script>
+                    <script src="scriptTeste.js"></script>
                 </div>
 
             </div>
@@ -254,32 +263,13 @@
                     <p style="font-size: 15px;">Prazo de Entrega</p>
                     <p style="font-size:10px; display: flex; justify-content: end; margin-top: 1rem;">ver mais</p>
                 </div>
-
-
-
-
             </div>
         </div>
-
-
-        <div class="containerBobIA">
-            <div class="bobIA" onclick="showModal()">
-                <i class='bx bxs-message-square-add' ></i>
-
-            </div>
-            <div id="modalBobIA" class="modalBobIA">
-                <span class="close" onclick="hideModal()">&times;</span>
-            </div>
-        </div>
-
-
     </div>
 
 
 
-
-
-    <!-- <script src="js/script.js"></script> -->
+    <script src="js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -289,64 +279,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
-    <script>
-        var modalContentAdded = false; // Variável para verificar se o conteúdo já foi adicionado ao modal
-
-        function showModal() {
-            var modal = document.getElementById("modalBobIA");
-            modal.style.display = "block";
-
-            // Verifica se o conteúdo já foi adicionado ao modal
-            if (!modalContentAdded) {
-                modal.innerHTML += ` <h1 id="modalTitle">BobIA | Suporte N3</h1>
-            <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
-            <button onclick="gerarResposta()" id="botao">Gerar Resposta</button>
-            <h3 id="respIA"> Resposta da IA: </h3>
-            <div id="resposta"></div>`;
-
-                modalContentAdded = true; // Define que o conteúdo foi adicionado
-            }
-
-            // FECHA O MODAL AO SER CLICADO DENTRO DO MODAL
-            window.addEventListener('click', function (event) {
-                var modal = document.getElementById('modalBobIA');
-                var modalContent = document.querySelector('.modal-content');
-
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        }
-
-        function hideModal() {
-            var modal = document.getElementById("modalBobIA");
-            modal.style.display = "none";
-        }
-
-
-        async function gerarResposta() {
-            const pergunta = document.getElementById('pergunta').value;
-
-            const response = await fetch('/perguntar', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ pergunta })
-            });
-
-            const data = await response.json();
-
-            resposta.style.display = 'block';
-            document.getElementById('resposta').innerText = data.resultado;
-        }
-
-    </script>
-
-
-
-
 </body>
 
 </html>

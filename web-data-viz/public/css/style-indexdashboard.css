@@ -147,7 +147,7 @@ a{
 } */
 
 .itensmenu {
-    padding: 14px;
+    padding: 10px;
     cursor: pointer;
     border-radius: 8px;
    display: flex;
@@ -265,7 +265,6 @@ a{
 
 
 .modal {
-    background-image: url("./../assets/backgroundimage.jpeg");
     display: none;
     /* position: fixed; */
     z-index: 1;
@@ -277,8 +276,7 @@ a{
   }
   
   .modal-content {
-    background-image: url("./../assets/backgroundimage.jpeg");
-    /* background-color: #763737; */
+    background-color: #763737;
      /* cor do modal */
     margin: 15% auto;
     padding: 20px;

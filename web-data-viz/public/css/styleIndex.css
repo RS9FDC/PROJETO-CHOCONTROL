@@ -31,7 +31,11 @@ a {
 }
 
 .logo img {
+<<<<<<< HEAD
+    width: 75px;
+=======
     width: 70px;
+>>>>>>> bae0bc65055bfefbb517a79a02d03aa8b4f82d4f
 }
 
 .navbar button {
