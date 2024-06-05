@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocontrol | Acompanhamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styleDashControle.css">
+    <link rel="stylesheet" href="../css/style-indexdashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+
+
+    <nav id="menulateral" >
+
+        <div id="sidebar">
+            <!-- opcoes de navegação -->
+
+           <img src="../assets/logoAtualizado.png" id="logo" alt="">
+
+
+
+            <ul id="itens">
+                <li class="itensmenu active">
+                    <a href="dashIndex.html">
+                        <i class="fa-solid fa-chart-line" style="color: #422919;  margin-left: 2rem;  margin-right: 2rem;">Dashboard</i>
+                        <div id="linha-vertical"></div>
+                    </a>
+                </li>
+                <li class="itensmenu "><a href="dashControle.html">
+                        <i class="fa-solid fa-table" style="color: #422919;  margin-left: 2rem; margin-right: 2rem;">Acompanhamento</i>
+                    </a></li>
+            </ul>
+
+            <!-- foto de fundo usuario -->
+            <div id="fotousuario">
+                <img style="border-radius: 30px;" id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
+                <p id="usuario_informacoes">
+                    <span class="descricao">
+                        Fernando Brandão
+                    </span>
+                </p>
+
+
+                <a href="./../index.html"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                <span class="itensmenu"></span>
+
+            </div>
+        </div>
+
+
+
+    </nav>
+
+
+
+    <div id="parteprincipal">
+
+        <!-- menu horizontal -->
+        <div id="menucima" style="margin-top: 2rem;">
+            <main id="main" >
+                <span id="bem-vindo" style="font: Antic Didone; font-size: 20px;width: 100%; ">Olá, Fernando.</span>
+            </main>
+
+            <!-- <div id="pesquisa">
+                <input type="text" placeholder="Pesquisar" id="pesq">
+                <i class="fa-solid fa-magnifying-glass" color="#422919;"
+                    style="  font-size: 25px;"></i>
+            </div> -->
+
+
+
+            <div id="confgs" style="  display: flex; ">
+
+                <!-- <div id="icons" style="  flex-grow: 1; display: flex; justify-content: start;  margin-left: 3rem ">
+                    <i class="fa-solid fa-bell" id="icons"
+                        style="color: #422919; margin-left: 1rem; font-size: 30px; width: fit-content"></i>
+                    <i class="fa-solid fa-envelope" id="icons"
+                        style="color: #422919; font-size: 30px; width: fit-content"></i>
+                    <i class="fa-solid fa-moon" id="icons"
+                        style="color: #422919; font-size: 30px; width: fit-content"></i>
+                </div> -->
+
+
+                <div id="usu" style="display: flex; flex-direction: row; width: 60%;  margin-left: 50rem; ">
+                    <img id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
+
+
+                    <i style="margin-top: 1rem; display: flex;" class="fa-solid fa-chevron-down"></i>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+        <!-- cards de Do responsavel da leva e outras informações -->
+
+        <div class="dash">
+            <div class="container">
+                <!-- <div class="cards" style="margin-left: 2%;">
+                    <p >Responsável da Leva:</p>
+                    <p>Fernando Brandão</p>
+                </div> -->
+
+                <div class="cards" style="margin-left: 115px;">
+                    <p>Temperatura atual:</p>
+                    <p  style="color: #BF1700; font-size: 25px;">97°C</p>
+                </div>
+
+                <div class="cards">
+                    <p>Estado da leva:</p>
+                    <p  style="color: #BF1700; font-size: 25px;">Critico</p>
+                </div>
+
+                <div class="cards">
+                    <p>Tipo de chocolate:</p>
+                    <p>Branco</p>
+                </div>
+
+
+                
+            </div>
+        </div>
+   <!-- onde o grafico é colocado no html -->
+
+            <div class="graficosContainer">
+                <!-- <div class="graficoColuna">
+                    <canvas id="myChart2" style="position: relative; height:30vh; width:30vw"></canvas>
+                </div> -->
+                <div id="graficoLinha">
+                <section style="height:30vh; width:30vw; margin-left: 400px;">
+                    <canvas id="lm35Temperatura"></canvas>
+                </section>
+            </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
+<script>
+        var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
+        contextoLm35Temperatura.canvas.width = 1000;
+        contextoLm35Temperatura.canvas.height = 500;
+        var lm35Temperatura = new Chart(
+            contextoLm35Temperatura,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Temperatura',
+                        type: 'line',
+                        borderColor: ['#b17e57'],
+                        backgroundColor: ['#b17e57']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Temperatura'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+
+        var paginacao = {};
+        var tempo = {};
+        function obterDados(grafico, endpoint) {
+            var http = new XMLHttpRequest();
+            http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+            http.send(null);
+            var valores = JSON.parse(http.responseText);
+            if (paginacao[endpoint] == null) {
+                paginacao[endpoint] = 0;
+            }
+            if (tempo[endpoint] == null) {
+                tempo[endpoint] = 0;
+            }
+            // Exibir à partir do último elemento exibido anteriormente
+            var ultimaPaginacao = paginacao[endpoint];
+            paginacao[endpoint] = valores.length;
+            var valores = valores.slice(ultimaPaginacao);
+            valores.forEach((valor) => {
+                //Máximo de 60 itens exibidos no gráfico
+                if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                    grafico.data.labels.shift();
+                    grafico.data.datasets[0].data.shift();
+                }
+
+                grafico.data.labels.push(tempo[endpoint]++);
+                grafico.data.datasets[0].data.push(parseFloat(valor));
+                grafico.update();
+            })
+        }
+
+        setInterval(() => {
+            obterDados(lm35Temperatura, 'lm35/temperatura');
+        }, 1000);
+
+
+    const labels = [
+        'Abr',
+        'Mar',
+        'Fev',
+        'Jan',
+    ];
+
+    const data1 = {
+        labels: labels,
+        datasets: [{
+            label: 'Temperatura acima do ideal',
+            backgroundColor: '#8d4e24',
+            borderColor: '#8d4e24',
+            data: [1, 2, 3, 4, 5, 6],
+        },
+        ]
+    };
+
+  
+
+    const config2 = {
+        type: 'bar',
+        data: data1,
+        options: {
+            indexAxis: 'y',
+        }
+    };
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+</script>

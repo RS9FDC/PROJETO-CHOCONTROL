@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Institucional | Chocontrol </title>
+    <link rel="stylesheet" href="./css/styleIndex.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="./assets/imagens/Group 2295.png" alt=""></a>
+        </div>
+        <div class="menu">
+            <a href="cadastroEmpresa.html">Comece agora</a>
+            <a href="#texto1">Sobre nós</a>
+            <!-- <a href="">Planos</a> -->
+            <a href="#paginaToda">Calculadora</a>
+            <!-- <a href="">Home</a> -->
+        </div>
+        <button><a href="loginChocontrol.html">Entrar</a></button>
+    </div>
+    <div class="linha">
+        <p>Contrate nossos serviços agora mesmo</p>
+    </div>
+    <div class="banner">
+    </div>
+    <div class="sensor">
+        <div class="sub">
+            <span>Sensor LM-35</span>
+            <h4>Automatize suas produções</h4>
+        </div>
+        <div class="planos">
+            <a href="">Saiba mais</a>
+            <!-- <a href="">Planos</a> -->
+        </div>
+    </div>
+    <div class="carrosel">
+        <div class="slides">
+            <!-- Inicio dos radios -->
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <!-- fim dos radios -->
+
+            <!-- Slides images -->
+            <div class="slide first">
+                <img src="./assets/imagens/imagemcarrosel1.png" alt="imagem 1°">
+                <div class="texto1" id="texto1">
+                    <h1>Sobre nós</h1>
+                    Nós somos a Chocontrol, uma empresa desenvolvedora de softwares para o gerenciamento de temperatura
+                    de chocalates. Temos como valor sempre entregar o melhor, para que nossos clientes tenham o melhor
+                    controle da sua produção e consequentemente um melhor chocalate.
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./assets/imagens/Imagemcarrosel2.png" alt="imagem 2°">
+                <div class="texto2">
+                    <h1>Alertas dinâmicos </h1>
+                    Alertas intuitívos que mostram defeitos na produção, mostrando ao cliente suas possíveis perdas,
+                    relacionados a gráficos que mostram os altos e baixos de sua empresa ao decorrer dos meses e anos.
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./assets/imagens/Imagemcarrosel3.png" alt="imagem 3°">
+                <div class="texto3">
+                    <h1>Sensores</h1>
+                    Detalhamento individual e coletivo dos sensores. Cada sensor poderá ser acompanhado individualmente
+                    para que o cliente possa ter um controle diferente para cada tipo de chocalate em diferentes setores
+                    da empresa. Mas podendo ser analisado de uma forma geral de todos os sensores e setores.
+                </div>
+            </div>
+            <!-- fim dos slides -->
+            <div class="navegation">
+                <div class="auto1"></div>
+                <div class="auto2"></div>
+                <div class="auto3"></div>
+            </div>
+        </div>
+
+        <div class="nomes">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+        </div>
+
+    </div>
+
+
+
+    <!-- tentando por a calculadora financeira no site -->
+
+
+
+    <div class="paginaToda" id="paginaToda">
+
+        <h2>Calculadora Financeira</h2>
+
+        <div class="container" id="div_selecaotipoChocolate">
+
+            <label id="labelSelect" for="tipoDeChcolate">Escolha um tipo de chocolate:</label>
+
+            <select name="chocolate" id="select_TiposChocolate">
+
+                <option value="" disabled selected>Escolha um tipo de chocolate</option>
+                <option value="Chocolate Amargo">Chocolate Amargo</option>
+                <option value="Chocolate Branco">Chocolate Branco</option>
+                <option value="Chocolate Ao Leite">Chocolate Ao Leite </option>
+
+            </select>
+
+        </div>
+        <div class="container" id="div_inputs">
+
+            <label for="TempMax">Temperatura máxima:</label>
+            <div class="input_calculadora">
+                <input type="text" placeholder="Temperatura máxima" id="input_TempMax">
+            </div>
+
+            <label for="TempMin">Temperatura mínima:</label>
+            <div class="input_calculadora">
+                <input type="text" placeholder="Temperatura mínima" id="input_TempMin">
+            </div>
+
+            <label for="TemperaturaMedia">Maior polo da temperatura da leva de chocolate:</label>
+            <div class="input_calculadora">
+                <input type="text" placeholder="Polo temperatura:" id="input_TempPico">
+            </div>
+            <label for="QtdChocolate">Quantidade de Chocolate (Kg) sendo produzida:</label>
+            <div class="input_calculadora">
+                <input type="text" placeholder="KG" id="input_QtdChocolate">
+            </div>
+            <label for="preco">Preço do chocolate (Por Kg):</label>
+            <div class="input_calculadora">
+                <input type="text" placeholder="Preço por KG" id="input_preco">
+            </div>
+            <button class="btn" onclick="calcular()">Calcular produção de chocolate</button>
+        </div>
+
+        <div class="container" id="div_selecaotipoChocolate">
+            <div class="result" id="div_Result"></div>
+            <div class="result" id="div_Result02"></div>
+            <div class="result" id="div_Result03"></div>
+            <div class="result" id="div_porcentagem"></div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Fim da calculadora financeira -->
+
+
+
+    <div class="footer">
+        <div class="caixa">
+            <div class="logo">
+                <img src="./assets/imagens/logofooter.png" alt="">
+            </div>
+            <div class="redes">
+                <span>Nos acompanhe:</span>
+                <img src="./assets/imagens/Instagram.png" alt="">
+                <img src="./assets/imagens/LinkedIn.png" alt="">
+                <img src="./assets/imagens/Facebook.png" alt="">
+            </div>
+        </div>
+        <div class="fundocaixa">
+            <div class="texto">
+                <a href="./cadastroEmpresa.html">Comece agora</a>
+                <a href="#texto1">Sobre nós</a>
+                <!-- <a href="">Planos</a> -->
+                <a href="">Contato</a>
+            </div>
+            <div class="email">
+                <span>Chocontrol@gmail.com</span>
+                <span>11-97682-6423</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+
+</html>
+
+<script>
+    document.getElementById("select_TiposChocolate").onchange = function () {
+        var selectValor = this.value;
+
+        if (selectValor === "Chocolate Amargo") {
+            document.getElementById("input_TempMax").value = "80";
+            document.getElementById("input_TempMin").value = "40";
+        } 
+        else if (selectValor === "Chocolate Branco"){
+            document.getElementById("input_TempMax").value = "60";
+            document.getElementById("input_TempMin").value = "50";
+        }
+        else if (selectValor === "Chocolate Ao Leite"){
+            document.getElementById("input_TempMax").value = "70";
+            document.getElementById("input_TempMin").value = "40";
+        }
+    }
+
+    function calcular() {
+    var TipoChocolate = select_TiposChocolate.value;
+    var TemperaturaPico = Number(input_TempPico.value);
+    var QtdChocolate = Number(input_QtdChocolate.value);
+    var PrecoChocolate = Number(input_preco.value);
+
+    var Receitapotencial = QtdChocolate * PrecoChocolate;
+
+    var Temperaturaideal = 0;
+    var limiteMax = Number(input_TempMax.value);
+    var limiteMin = Number(input_TempMin.value);
+
+    var perdaTotal = '0'
+
+    var teste = 0
+    if (TipoChocolate == '' || TemperaturaPico == '' || QtdChocolate == '' || PrecoChocolate == '' || limiteMax == '' || limiteMin == '') {
+        alert('Preencha todos os campos da tabela')
+        teste = 1
+    }
+
+    document.getElementById("select_TiposChocolate").onchange = function () {
+
+        if (selectValor === "Chocolate Amargo") {
+            document.getElementById("input_TempMax").value = "80";
+            document.getElementById("input_TempMin").value = "40";
+        } else {
+            // Aqui você pode adicionar lógica para outras opções, se necessário
+        }
+    };
+
+    if (TipoChocolate == "Chocolate Amargo" && (limiteMax > 80 || limiteMin < 40) && teste == 0) {
+        alert('O valor inserido impossibilitaria que o processo de conchagem ocorra')
+        var perdaTotal = '1'
+    } else
+
+        if (TipoChocolate == "Chocolate Branco" && (limiteMax > 60 || limiteMin < 50) && teste == 0) {
+            alert('O valor inserido impossibilitaria que o processo de conchagem ocorra')
+            var perdaTotal = '1'
+        } else
+
+            if (TipoChocolate == "Chocolate ao Leite" && (limiteMax > 70 || limiteMin < 40) && teste == 0) {
+                alert('O valor inserido impossibilitaria que o processo de conchagem ocorra')
+                var perdaTotal = '1'
+            }
+
+
+
+    var QtdPerdida = 0;
+    if (TemperaturaPico > limiteMax || TemperaturaPico < limiteMin) {
+        QtdPerdida = QtdChocolate
+    }
+
+
+
+    var QtdChocolateFinal = QtdChocolate - QtdPerdida;
+    var ReceitaFinal = QtdChocolateFinal * PrecoChocolate;
+    var receitaPerdida = Receitapotencial - ReceitaFinal;
+
+    // if (teste != 1) {
+    //     div_Result.innerHTML = `Você selecionou o ${TipoChocolate}, que tem a temperatura ideal entre: ${limiteMax} ºC e ${limiteMin} ºC .`;
+    // }
+
+
+    if (receitaPerdida <= 0 && perdaTotal != 1 && teste == 0) {
+
+        div_Result02.innerHTML = `Parabéns, devido ao bom controle de temperatura você pode faturar até R$${ReceitaFinal} em vendas de chocolate!`;
+        div_Result03.innerHTML = `O bom controle de temperatura é fundamental no processo de fabricação do chocolate, principalmente na etapa de conchagem em que, um grau fora da temperatura ideal pode prejudicar todo este processo. <br><br>`
+
+    } else if ((receitaPerdida > 0 || perdaTotal == 1) && teste == 0) {
+
+        div_Result02.innerHTML = `Infelizmente, devido à falta de controle térmico, seu negócio perdeu ${QtdChocolate} KG em chocolates. Podendo faturar até R$${Receitapotencial} caso houvesse um melhor monitoramento térmico.`;
+
+        div_Result03.innerHTML = `Manter uma temperatura constante e adequada é essencial para garantir que o chocolate atinja a textura desejada e desenvolva seu sabor característico. Quando a temperatura não é controlada adequadamente durante a conchagem, podem ocorrer problemas como textura granulada, separação de gordura ou alterações no sabor. Portanto, o bom controle térmico não apenas garante a qualidade do produto final, mas também é fundamental para a consistência e a excelência do chocolate.`;
+
+
+    }
+}
+
+</script>

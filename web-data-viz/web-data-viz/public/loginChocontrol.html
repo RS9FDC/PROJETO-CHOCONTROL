@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Chocontrol</title>
+    <link rel="stylesheet" href="./css/styleLogin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">    
+</head>
+
+<body>
+    <div id="login" class="login">
+        <a href="index.html"><img src="./assets/logo.png" alt="logo" class="logo"></a>
+        <h1>Login</h1>
+        <br><br>
+        
+        Insira o código da empresa <br> <input type="text" id="email_input" placeholder="Código"> <br><br>
+        Insira sua senha <br> <input type="password" id="senha_input" placeholder="Senha"> <br><br>
+
+       <div id="div_textoContainer" class="textoContainer">
+        <button onclick="manterLogin()" class="manterLogin_btn"></button><span class="manterLoginTexto"> Manter login</span>
+        <span class="esqueceuSenhaTexto">Esqueceu a senha?</span>
+       </div>
+
+        <button onclick="entrar()">Iniciar Sessão</button>
+        <br><br>
+
+    </div>
+
+</body>
+</html>
+<script>
+    // function iniciar() {
+    //     var codigo= input_codigo.value;
+    //     var senha= input_senha.value;
+    //     var tamanho_codigo = codigo.length
+
+
+    //     if(tamanho_codigo < 8){
+    //         alert("Digite um código válido!");
+    //         input_codigo.value= "";
+    //     }
+    //     else if(senha.length <= 6){
+    //         alert("Senha inválida");
+    //         input_senha.value = "";
+    //     }
+    //     else{
+    //         window.location.href = "./dashboard/dashIndex.html"
+    //     }
+        
+    // }
+    function entrar() {
+        
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/dashIndex.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+
+</script>
+
