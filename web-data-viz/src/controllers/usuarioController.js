@@ -20,20 +20,17 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        // empresaId: resultadoAutenticar[0].empresaId,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        // senha: resultadoAutenticar[0].senha,
-                                        
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
+
+
+                        res.json({
+                            // empresaId: resultadoAutenticar[0].empresaId,
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome,
+                            // senha: resultadoAutenticar[0].senha,
+
+                        });
+
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -59,44 +56,44 @@ function cadastrar(req, res) {
     var empresaId = req.body.empresaServer;
     var telefone = req.body.telefoneServer;
     var cnpj = req.body.cnpjServer;
-    var cep =req.body.cepServer;
-    var numero =req.body.numeroServer;
-    var complemento =req.body.complementoServer;
-   
+    var cep = req.body.cepServer;
+    var numero = req.body.numeroServer;
+    var complemento = req.body.complementoServer;
+
 
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } 
+    }
     // else if (senha == undefined) {
     //     res.status(400).send("Sua senha está undefined!");
     // } 
     // else if (empresaId == undefined) {
     //     res.status(400).send("Sua empresa está undefined!");
-        
+
     // } 
     else if (telefone == undefined) {
         res.status(400).send("Sua empresa está undefined!");
-        
-    }else if (cnpj == undefined) {
+
+    } else if (cnpj == undefined) {
         res.status(400).send("Sua empresa está undefined!");
-        
-    }else if (cep == undefined) {
+
+    } else if (cep == undefined) {
         res.status(400).send("Sua empresa está undefined!");
-        
-    }else if (numero == undefined) {
+
+    } else if (numero == undefined) {
         res.status(400).send("Sua empresa está undefined!");
-        
-    }else if (complemento == undefined) {
+
+    } else if (complemento == undefined) {
         res.status(400).send("Sua empresa está undefined!");
-        
+
     }
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome,telefone,email,cnpj,cep,numero,complemento )
+        usuarioModel.cadastrar(nome, telefone, email, cnpj, cep, numero, complemento)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -125,15 +122,15 @@ function cadastrarFunc(req, res) {
 
     // Se chegou até aqui, significa que o arquivo foi enviado
     const foto = req.file.filename;
-    const {nome, email,senha } = req.body;
-    const usuario = {nome,email,senha,foto };
+    const { nome, email, senha } = req.body;
+    const usuario = { nome, email, senha, foto };
     console.log(usuario)
     console.log(foto)
 
     // Faça as validações dos valores
     if (!foto || !nome || !email || !senha) {
         return res.status(400).send("Todos os campos são obrigatórios!");
-    } 
+    }
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js

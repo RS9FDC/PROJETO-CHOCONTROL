@@ -22,7 +22,7 @@
         <br><br>
         
         Insira o código da empresa <br> <input type="text" id="email_input" placeholder="Código"> <br><br>
-        Insira sua senha <br> <input type="password" id="input_senha" placeholder="Senha"> <br><br>
+        Insira sua senha <br> <input type="password" id="senha_input" placeholder="Senha"> <br><br>
 
        <div id="div_textoContainer" class="textoContainer">
         <button onclick="manterLogin()" class="manterLogin_btn"></button><span class="manterLoginTexto"> Manter login</span>
@@ -99,7 +99,7 @@
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/dashIndex.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
