@@ -13,6 +13,10 @@ router.post('/cadastrarFuncionario', upload.single('foto'), (req, res) => {
     usuarioController.cadastrarFunc(req, res);
 });
 
+
+
+
+
 router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
