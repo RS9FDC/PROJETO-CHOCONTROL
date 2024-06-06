@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chocontrol | Login</title>
+    <title>Login | Chocontrol</title>
     <link rel="stylesheet" href="./css/styleLogin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
         <br><br>
         
         Insira o código da empresa <br> <input type="text" id="email_input" placeholder="Código"> <br><br>
-        Insira sua senha <br> <input type="password" id="input_senha" placeholder="Senha"> <br><br>
+        Insira sua senha <br> <input type="password" id="senha_input" placeholder="Senha"> <br><br>
 
        <div id="div_textoContainer" class="textoContainer">
         <button onclick="manterLogin()" class="manterLogin_btn"></button><span class="manterLoginTexto"> Manter login</span>
@@ -63,14 +63,14 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            // cardErro.style.display = "block"
+            alert("Mensagem de erro para todos os campos em branco");
+            // finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -99,7 +99,7 @@
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/dashIndex.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -110,7 +110,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 
@@ -121,9 +121,9 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 
 </script>
