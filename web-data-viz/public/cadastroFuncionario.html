@@ -20,10 +20,10 @@
         <img src="./assets/logo.png" alt="logo" class="logo">
         <h1>Cadastro funcionário</h1>
         <br><br>
-        <input type="file" id="foto" name="foto" required>
+        <!-- <input type="file" id="foto" name="foto" required> -->
         <span>Empresa</span>
         <select name="empresas" id="listaEmpresas">
-            <option  selected>Selecione uma Empresa</option>
+            <option selected>Selecione uma empresa</option>
         </select>
         <!-- Código da empresa <br> <input type="text" id="input_codEmpresa" placeholder="Código"> -->
         Nome completo <br> <input type="text" id="nome" placeholder="Nome">
@@ -32,7 +32,7 @@
         Confirmação de senha <br> <input type="password" id="input_confPassword" placeholder="Confirmação de senha">
 
 
-        <button onclick="cadastrarFuncionario()">Cadastre-se</button>
+        <button onclick="cadastrar()">Cadastre-se</button>
 
     </div>
 
@@ -76,9 +76,9 @@
 
     // }
 
-    function cadastrarFuncionario() {
+    function cadastrar() {
 
-       
+
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
@@ -90,79 +90,87 @@
         // var confSenha = input_confPassword.value;
         // console.log(foto)
 
-        const formData = new FormData();
-        formData.append('foto', foto.files[0])
-        formData.append('nome', nome.value)
-        formData.append('email', email.value)
-        formData.append('senha', senha.value)
-        formData.append('listaEmpresas', listaEmpresas.value)
-        console.log(senha.value)
-        console.log(listaEmpresas.value)
 
+
+        var nomeVar = nome.value;
+        var emailVar = email.value;
+        var senhaVar = senha.value;
+        var confirmacaoSenhaVar = input_confPassword.value;
+        var empresaVar = listaEmpresas.value;
+        
+        console.log(nomeVar);
+        console.log(emailVar);
+        console.log(senhaVar);
+        console.log(empresaVar);
 
         if (
-            foto == "" ||
-            nome == "" ||
-            email == "" ||
-            listaEmpresas == ""||
-            senha == ""
-        ) {
-            // cardErro.style.display = "block";
-            // mensagem_erro.innerHTML =
-            //     "(Mensagem de erro para todos os campos em branco)";
+            nomeVar == "" ||
+            emailVar == "" ||
+            senhaVar == "" ||
+            confirmacaoSenhaVar == "" ||
+            empresaVar == ""
+        ){
+                // cardErro.style.display = "block";
+                // mensagem_erro.innerHTML =
+                //     "(Mensagem de erro para todos os campos em branco)";
 
-            alert('Mensagem de erro para todos os campos em branco')
+                alert('Mensagem de erro para todos os campos em branco')
 
-            //   finalizarAguardar();
-            return false;
-        // } else {
-        //     setInterval(sumirMensagem, 5000);
+                //   finalizarAguardar();
+                return false;
+                // } else {
+                //     setInterval(sumirMensagem, 5000);
+            }
+
+
+            fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        empresaServer: empresaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+        //   cardErro.style.display = "block";
+
+         alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+          setTimeout(() => {
+            window.location = "loginChocontrol.html";
+          }, "2000");
+
+        //   limparFormulario();
+        //   finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
         }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
 
+    return false;
+  }
 
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrarFuncionario", {
-            method: "POST",
-            body: formData
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    // cardErro.style.display = "block";
-
-                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
-                    // mensagem_erro.innerHTML =
-                    // "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
-
-                    // limparFormulario();
-                    // finalizarAguardar();
-                } else {
-
-                    alert("Houve um erro ao tentar realizar o cadastro!")
-                    // throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                // finalizarAguardar();
-            });
-
-        return false;
-    }
-
-    function listar() {
+  function listar() {
     fetch("/empresas/listar", {
       method: "GET",
     })
       .then(function (resposta) {
         resposta.json().then((empresas) => {
           empresas.forEach((empresa) => {
-            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+            listaEmpresas.innerHTML += `<option value='${empresa.empresaId}'>${empresa.empresaId}</option>`;
           });
         });
       })
@@ -171,8 +179,7 @@
       });
   }
 
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none";
-    // }
-    //}
+//   function sumirMensagem() {
+//     cardErro.style.display = "none";
+//   }
 </script>
