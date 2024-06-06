@@ -30,8 +30,8 @@ const serial = async (
             // altere!
             // Credenciais do banco de dados
             host: 'localhost',
-            user: 'aluno',
-            password: 'sptech',
+            user: 'root',
+            password: 'manu',
             database: 'chocontrol',
             port: 3306
         }
@@ -79,7 +79,7 @@ const serial = async (
             // altere!
             // Este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO tbTemperatura (temperatura) VALUES (?)',
+                'INSERT INTO Monitoramento (temperatura) VALUES (?)',
                 [ lm35Temperatura, ]
             );
             console.log("valores inseridos no banco: ", + lm35Temperatura )
