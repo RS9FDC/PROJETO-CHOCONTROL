@@ -29,7 +29,7 @@
         <span class="esqueceuSenhaTexto">Esqueceu a senha?</span>
        </div>
 
-        <button onclick="entrar()">Iniciar Sessão</button>
+        <button onclick="iniciar()">Iniciar Sessão</button>
         <br><br>
 
     </div>
@@ -37,20 +37,26 @@
 </body>
 </html>
 <script>
-    // function iniciar() {
-    //     var codigo= input_codigo.value;
-    //     var senha= input_senha.value;
-    //     var tamanho_codigo = codigo.length
+    function iniciar() {
+        var senha= senha_input.value;
+        var email = email_input.value;
+        var email_pcom = email.endsWith(".com");
+        var email_arroba = email.indexOf('@');
 
-
-    //     if(tamanho_codigo < 8){
-    //         alert("Digite um código válido!");
-    //         input_codigo.value= "";
-    //     }
-    //     else if(senha.length <= 6){
-    //         alert("Senha inválida");
-    //         input_senha.value = "";
-    //     }
+        if ( email == "") {
+            alert('Você deve inserir algo válido no campo email')
+        }
+        else if (email_pcom != true || email_arroba < 0) {
+            alert('Seu email deve conter o caracter "@" e terminar com ".com"');
+        }
+        else if(senha.length <= 6){
+            alert("Senha inválida");
+            input_senha.value = "";
+        }
+        else {
+            entrar();
+        }
+    }
     //     else{
     //         window.location.href = "./dashboard/dashIndex.html"
     //     }

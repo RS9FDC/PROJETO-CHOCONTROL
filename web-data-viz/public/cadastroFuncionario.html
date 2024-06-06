@@ -32,7 +32,7 @@
         Confirmação de senha <br> <input type="password" id="input_confPassword" placeholder="Confirmação de senha">
 
 
-        <button onclick="cadastrar()">Cadastre-se</button>
+        <button onclick="iniciar()">Cadastre-se</button>
 
     </div>
 
@@ -40,41 +40,40 @@
 
 </html>
 <script>
-    // function iniciar() {
-    //     var foto = foto.files;
-    //     var nome = nome.value
-    //     var email = email.value;
-    //     var senha = senha.value;
-    //     var confSenha = input_confPassword.value;
+    function iniciar() {
+        var nome = nome.value
+        var email = email.value;
+        var senha = senha.value;
+        var confSenha = input_confPassword.value;
 
+        
+        var cod = empresa.length;
+        var email_pcom = email.endsWith(".com");
+        var email_arroba = email.indexOf('@');
+        var tam_senha = senha.length;
 
-    //     var cod = empresa.length;
-    //     var email_pcom = email.endsWith(".com");
-    //     var email_arroba = email.indexOf('@');
-    //     var tam_senha = senha.length;
+        if (cod < 8) {
+            alert('Insira um código válido');
+        }
 
-    //     if (cod < 8) {
-    //         alert('Insira um código válido');
-    //     }
+        else if (email_pcom != true || email_arroba < 0) {
+            alert('Seu email deve conter o caracter "@" e terminar com ".com"');
+        }
 
-    //     else if (email_pcom != true || email_arroba < 0) {
-    //         alert('Seu email deve conter o caracter "@" e terminar com ".com"');
-    //     }
+        else if (tam_senha <= 6) {
+            alert('Coloque uma senha com 6 ou mais caracteres');
+        }
 
-    //     else if (tam_senha <= 6) {
-    //         alert('Coloque uma senha com 6 ou mais caracteres');
-    //     }
+        else if (confSenha != senha) {
+            alert('Digite a senha correta');
+        }
 
-    //     else if (confSenha != senha) {
-    //         alert('Digite a senha correta');
-    //     }
+        else {
 
-    //     else {
+            cadastrarFuncionario();
+        }
 
-    //         cadastrarFuncionario();
-    //     }
-
-    // }
+    }
 
     function cadastrar() {
 
