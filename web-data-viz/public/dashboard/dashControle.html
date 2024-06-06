@@ -16,20 +16,20 @@
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 
 
 
-    <nav id="menulateral" >
+    <nav id="menulateral">
 
         <div id="sidebar">
             <!-- opcoes de navegação -->
 
-           <a href="./../index.html"><img src="../assets/logoAtualizado.png" id="logo" alt=""></a>
+            <a href="./../index.html"><img src="../assets/logoAtualizado.png" id="logo" alt=""></a>
 
 
 
@@ -63,11 +63,11 @@
 
             <!-- foto de fundo usuario -->
             <div id="fotousuario">
-                <img style="border-radius: 30px;" id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
+                <!-- <img style="border-radius: 30px;" id="foto" src="../assets/usuario.jpg" alt="foto do usuario"> -->
                 <p id="usuario_informacoes">
-                    <span class="descricao">
-                        Fernando Brandão
-                    </span>
+                    <!-- <span class="descricao"> -->
+                        <span id="NomeVar" style="margin-left: 2rem; font-size: 20px;"></span>
+                    <!-- </span> -->
                 </p>
 
 
@@ -86,9 +86,9 @@
     <div id="parteprincipal">
 
         <!-- menu horizontal -->
-        <div id="menucima" style="margin-top: 2rem;">
-            <main id="main" >
-                <span id="bem-vindo" style="font: Antic Didone; font-size: 20px;width: 100%; ">Olá, Fernando.</span>
+        <div id="menucima" style="margin-top: 2rem; font-size: 30px;">
+            <main id="main">
+                <span>Olá, <span id="NomeVar2"></span></span>
             </main>
 
             <!-- <div id="pesquisa">
@@ -112,10 +112,8 @@
 
 
                 <div id="usu" style="display: flex; flex-direction: row; width: 60%;  margin-left: 50rem; ">
-                    <img id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
-
-
-                    <i style="margin-top: 1rem; display: flex;" class="fa-solid fa-chevron-down"></i>
+                    <!-- <img id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
+                    <i style="margin-top: 1rem; display: flex;" class="fa-solid fa-chevron-down"></i> -->
                 </div>
 
 
@@ -135,12 +133,12 @@
 
                 <div class="cards" style="margin-left: 115px;">
                     <p>Temperatura atual:</p>
-                    <p  style="color: #BF1700; font-size: 25px;">97°C</p>
+                    <p style="color: #BF1700; font-size: 25px;">97°C</p>
                 </div>
 
                 <div class="cards">
                     <p>Estado da leva:</p>
-                    <p  style="color: #BF1700; font-size: 25px;">Critico</p>
+                    <p style="color: #BF1700; font-size: 25px;">Critico</p>
                 </div>
 
                 <div class="cards">
@@ -149,101 +147,103 @@
                 </div>
 
 
-                
+
             </div>
         </div>
-   <!-- onde o grafico é colocado no html -->
+        <!-- onde o grafico é colocado no html -->
 
-            <div class="graficosContainer">
-                <!-- <div class="graficoColuna">
+        <div class="graficosContainer">
+            <!-- <div class="graficoColuna">
                     <canvas id="myChart2" style="position: relative; height:30vh; width:30vw"></canvas>
                 </div> -->
-                <div id="graficoLinha">
+            <div id="graficoLinha">
                 <section style="height:30vh; width:30vw; margin-left: 400px;">
                     <canvas id="lm35Temperatura"></canvas>
                 </section>
             </div>
-            </div>
         </div>
+    </div>
 
 </body>
 
 </html>
 <script>
-        var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
-        contextoLm35Temperatura.canvas.width = 1000;
-        contextoLm35Temperatura.canvas.height = 500;
-        var lm35Temperatura = new Chart(
-            contextoLm35Temperatura,
-            {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: 'Temperatura',
-                        type: 'line',
-                        borderColor: ['#b17e57'],
-                        backgroundColor: ['#b17e57']
+    NomeVar.innerHTML = sessionStorage.NOME_USUARIO;
+    NomeVar2.innerHTML = sessionStorage.NOME_USUARIO;
+    var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
+    contextoLm35Temperatura.canvas.width = 1000;
+    contextoLm35Temperatura.canvas.height = 500;
+    var lm35Temperatura = new Chart(
+        contextoLm35Temperatura,
+        {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Temperatura',
+                    type: 'line',
+                    borderColor: ['#b17e57'],
+                    backgroundColor: ['#b17e57']
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Temperatura'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
                     }]
                 },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Temperatura'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    animation: {
-                        duration: 0
-                    }
+                animation: {
+                    duration: 0
                 }
             }
-        );
-
-
-        var paginacao = {};
-        var tempo = {};
-        function obterDados(grafico, endpoint) {
-            var http = new XMLHttpRequest();
-            http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
-            http.send(null);
-            var valores = JSON.parse(http.responseText);
-            if (paginacao[endpoint] == null) {
-                paginacao[endpoint] = 0;
-            }
-            if (tempo[endpoint] == null) {
-                tempo[endpoint] = 0;
-            }
-            // Exibir à partir do último elemento exibido anteriormente
-            var ultimaPaginacao = paginacao[endpoint];
-            paginacao[endpoint] = valores.length;
-            var valores = valores.slice(ultimaPaginacao);
-            valores.forEach((valor) => {
-                //Máximo de 60 itens exibidos no gráfico
-                if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
-                    grafico.data.labels.shift();
-                    grafico.data.datasets[0].data.shift();
-                }
-
-                grafico.data.labels.push(tempo[endpoint]++);
-                grafico.data.datasets[0].data.push(parseFloat(valor));
-                grafico.update();
-            })
         }
+    );
 
-        setInterval(() => {
-            obterDados(lm35Temperatura, 'lm35/temperatura');
-        }, 1000);
+
+    var paginacao = {};
+    var tempo = {};
+    function obterDados(grafico, endpoint) {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+        http.send(null);
+        var valores = JSON.parse(http.responseText);
+        if (paginacao[endpoint] == null) {
+            paginacao[endpoint] = 0;
+        }
+        if (tempo[endpoint] == null) {
+            tempo[endpoint] = 0;
+        }
+        // Exibir à partir do último elemento exibido anteriormente
+        var ultimaPaginacao = paginacao[endpoint];
+        paginacao[endpoint] = valores.length;
+        var valores = valores.slice(ultimaPaginacao);
+        valores.forEach((valor) => {
+            //Máximo de 60 itens exibidos no gráfico
+            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                grafico.data.labels.shift();
+                grafico.data.datasets[0].data.shift();
+            }
+
+            grafico.data.labels.push(tempo[endpoint]++);
+            grafico.data.datasets[0].data.push(parseFloat(valor));
+            grafico.update();
+        })
+    }
+
+    setInterval(() => {
+        obterDados(lm35Temperatura, 'lm35/temperatura');
+    }, 1000);
 
 
     const labels = [
@@ -264,7 +264,7 @@
         ]
     };
 
-  
+
 
     const config2 = {
         type: 'bar',

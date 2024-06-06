@@ -54,10 +54,10 @@
 
             <!-- foto de fundo usuario -->
             <div id="fotousuario">
-                <img style="border-radius: 30px;" id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
+                <!-- <img style="border-radius: 30px;" id="foto" src="../assets/usuario.jpg" alt="foto do usuario"> -->
                 <p id="usuario_informacoes">
                     <span class="descricao">
-                        Fernando Brandão
+                        <span id="NomeVar" style="margin-left: 2rem; font-size: 20px;"></span>
                     </span>
                 </p>
 
@@ -75,9 +75,10 @@
     <div id="parteprincipal">
 
         <!-- menu horizontal -->
-        <div id="menucima" style="margin-top: 2rem;">
+        <div id="menucima" style="margin-top: 2rem; font-size: 30px;">
             <main id="main">
-                <h1 id="bem-vindo" style="font: Antic Didone; font-size: 20px;width: 100%; ">Olá, Fernando.</h1>
+                <h1>Olá, <span id="NomeVar2"></span></h1>
+                <!-- <h1 id="bem-vindo" style="font: Antic Didone; font-size: 20px;width: 100%; ">Olá, Fernando.</h1> -->
             </main>
 
             <!-- <div id="pesquisa">
@@ -100,10 +101,10 @@
 
 
                 <div id="usu" style="display: flex; flex-direction: row; width: 60%;  margin-left: 50rem; ">
-                    <img id="foto" src="../assets/usuario.jpg" alt="foto do usuario">
+                    <!-- <img id="foto" src="../assets/usuario.jpg" alt="foto do usuario"> -->
 
 
-                    <i class="fa-solid fa-chevron-down" style="margin-top: 1rem; display: flex; color: #000;"></i>
+                    <!-- <i class="fa-solid fa-chevron-down" style="margin-top: 1rem; display: flex; color: #000;"></i> -->
                 </div>
 
 
@@ -130,7 +131,9 @@
 
 
                 <div class="card">
-                    <p style="color: #BF1700;">Leva 2 em estado crítico</p>
+                    <a href="dashControle.html">
+                        <p style="color: #BF1700;">Leva 2 em estado crítico</p>
+                    </a>
                     <p>Máquina: 0134276</p>
                     <p>Tipo de chocolate: Ao leite</p>
                     <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: 85°C</p>
@@ -138,13 +141,15 @@
 
 
                 <div class="card">
-                    <p style="color: #BF1700;">Leva 3 em estado crítico</p>
+                    <a href="dashControle.html">
+                        <p style="color: #BF1700;">Leva 3 em estado crítico</p>
+                    </a>
                     <p>Máquina: 78855</p>
                     <p>Tipo de chocolate: Branco</p>
                     <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: 102°C</p>
                 </div>
 
-                <div class="card">
+                <!-- <div class="card">
                     <p style="color: #BF1700;">Leva 4 em estado crítico</p>
                     <p>Máquina: 5420350</p>
                     <p>Tipo de chocolate: Ao leite</p>
@@ -170,7 +175,7 @@
                     <p>Máquina: 1236588</p>
                     <p>Tipo de chocolate: Ao leite</p>
                     <p style="color: #E48F1E; font-size: 15px; margin-top: 3%;">Temperatura da leva: 79°C</p>
-                </div>
+                </div> -->
 
                 <div class="card">
                     <p>Adicionar máquina</p>
@@ -228,41 +233,6 @@
                     <p style="font-size: 15px;">Prazo de Entrega</p>
                     <p style="font-size:10px; display: flex; justify-content: end; margin-top: 1rem;">ver mais</p>
                 </div>
-
-
-                <div class="card">
-                    <p style="font-family: 'Antic Didone'; font-weight: 400; font-size: 25px;">Chocolate ao Leite</p>
-                    <p style="font-size: 15px; margin-top: 1rem;">Máquina: 789</p>
-                    <p style="font-size: 15px;">Local de Produção:</p>
-                    <p style="font-size: 15px;">Prazo de Entrega</p>
-                    <p style="font-size:10px; display: flex; justify-content: end; margin-top: 1rem;">ver mais</p>
-                </div>
-
-
-                <div class="card">
-                    <p style="font-family: 'Antic Didone'; font-weight: 400; font-size: 25px;">Chocolate ao Leite</p>
-                    <p style="font-size: 15px; margin-top: 1rem;">Máquina: 789</p>
-                    <p style="font-size: 15px;">Local de Produção:</p>
-                    <p style="font-size: 15px;">Prazo de Entrega</p>
-                    <p style="font-size:10px; display: flex; justify-content: end; margin-top: 1rem;">ver mais</p>
-                </div>
-
-
-                <div class="card">
-                    <p style="font-family: 'Antic Didone'; font-weight: 400; font-size: 25px;">Chocolate ao Leite</p>
-                    <p style="font-size: 15px; margin-top: 1rem;">Máquina: 789</p>
-                    <p style="font-size: 15px;">Local de Produção:</p>
-                    <p style="font-size: 15px;">Prazo de Entrega</p>
-                    <p style="font-size:10px; display: flex; justify-content: end; margin-top: 1rem;">ver mais</p>
-                </div>
-
-                <div class="card">
-                    <p style="font-family: 'Antic Didone'; font-weight: 400; font-size: 25px;">Chocolate ao Leite</p>
-                    <p style="font-size: 15px; margin-top: 1rem;">Máquina: 789</p>
-                    <p style="font-size: 15px;">Local de Produção:</p>
-                    <p style="font-size: 15px;">Prazo de Entrega</p>
-                    <p style="font-size:10px; display: flex; justify-content: end; margin-top: 1rem;">ver mais</p>
-                </div>
             </div>
         </div>
     </div>
@@ -279,5 +249,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script>
+        NomeVar.innerHTML = sessionStorage.NOME_USUARIO;
+        NomeVar2.innerHTML = sessionStorage.NOME_USUARIO;
+        // var NomeVar.innerHTML = sessionStorage.NOME_USUARIO;
+    </script>
 </body>
+
 </html>
