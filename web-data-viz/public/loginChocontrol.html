@@ -49,10 +49,10 @@
         else if (email_pcom != true || email_arroba < 0) {
             alert('Seu email deve conter o caracter "@" e terminar com ".com"');
         }
-        else if(senha.length <= 6){
-            alert("Senha inválida");
-            input_senha.value = "";
-        }
+        // else if(senha.length <= 6){
+        //     alert("Senha inválida");
+        //     input_senha.value = "";
+        // }
         else {
             entrar();
         }
@@ -99,6 +99,8 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
+
+                    sessionStorage.FK_EMPRESA = json.fkEmpresa;
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;

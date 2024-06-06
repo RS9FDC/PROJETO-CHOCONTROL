@@ -1,4 +1,6 @@
 
+
+DROP database chocontrol;
 CREATE DATABASE chocontrol;
 USE chocontrol;
 
@@ -14,7 +16,7 @@ CREATE TABLE Empresa(
 )auto_increment = 1025;
 
 CREATE TABLE funcionario(
-	idFuncionario CHAR(12)
+	idFuncionario INT AUTO_INCREMENT
     ,nome VARCHAR(50)
     ,senha CHAR(8)
     ,email VARCHAR(256)
@@ -33,7 +35,7 @@ CREATE TABLE intervaloTemperatura(
 
 
 CREATE TABLE Maquina(
-	idMaquina CHAR (10) PRIMARY KEY
+	idMaquina INT PRIMARY KEY auto_increment
     ,modeloMaquina VARCHAR(40)
     ,saborChocolate VARCHAR(30)
     ,fkEmpresa INT
@@ -45,9 +47,11 @@ CREATE TABLE Maquina(
 CREATE TABLE Sensor(
 		idSensor CHAR(6) PRIMARY KEY
         ,modeloSensor VARCHAR(20)
-        ,fkMaquina CHAR(10)
+        ,fkMaquina INT
         ,FOREIGN KEY (fkMaquina)REFERENCES Maquina(idMaquina)
 );
+
+
 
 
 CREATE TABLE Monitoramento (
@@ -59,6 +63,30 @@ CREATE TABLE Monitoramento (
 );
 
 
--- INSERT INTO Empresa VALUES ('3021AB12','Cacau Show','(11)97114-5072','cacaushow@outlook.com','00000000000000','01414-001','2568',NULL);
+INSERT INTO Empresa VALUES (03256841,'Cacau Show','(11)97114-5072','cacaushow@outlook.com','00000000000000','01414-001','2568',NULL);
 SELECT * FROM Empresa;
 SELECT * FROM funcionario; 
+
+SELECT * FROM Maquina;
+-- SELECT PARA A TEMPERATURA 
+SELECT monitoramento.temperatura,  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
+	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina;
+    
+-- Maquina Acima da Temperatura ideal
+SELECT monitoramento.temperatura,  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
+	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina
+		WHERE maquina.idMaquina = 'Cholocate Amargo' AND monitoramento.temperatura > 70;
+    
+-- Maquina Menor da Temperatura ideal
+SELECT monitoramento.temperatura,  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
+	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina
+		WHERE maquina.idMaquina = 'Cholocate Amargo' AND monitoramento.temperatura < 20;
+        
+        
+SELECT COUNT(monitoramento.temperatura),  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
+	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina
+		WHERE maquina.idMaquina = 'Cholocate Amargo' AND monitoramento.temperatura < 20;
+        
+SELECT COUNT(monitoramento.temperatura),  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
+	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina
+		WHERE maquina.idMaquina = 'Cholocate Amargo' AND monitoramento.temperatura > 70;

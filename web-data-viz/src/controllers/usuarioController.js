@@ -26,6 +26,7 @@ function autenticar(req, res) {
                             // empresaId: resultadoAutenticar[0].empresaId,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
+                            fkEmpresa: resultadoAutenticar[0].fkEmpresa,
                             // senha: resultadoAutenticar[0].senha,
 
                         });
@@ -149,7 +150,45 @@ function cadastrar(req, res) {
     }
 }
 
+
+
+function cadastrarMaquina(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var tipoCholocate = req.body.tipoCholocateServer;
+    var modeloMaquina = req.body.modeloMaquinaServer
+    var fkEmpresa = req.body.fkEmpresa
+   
+
+    // Faça as validações dos valores
+    if (tipoCholocate == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    }else if (modeloMaquina == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    }else if (fkEmpresa == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    }  else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarMaquina(modeloMaquina,tipoCholocate,fkEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarMaquina
 }

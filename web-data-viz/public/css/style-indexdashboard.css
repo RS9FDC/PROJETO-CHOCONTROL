@@ -280,8 +280,10 @@ a{
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    width: 40%;
+    height: 40%;
     display: flex;
+    border-radius: 10px;
     /* flex-direction: column;
     align-items: center; */
   }

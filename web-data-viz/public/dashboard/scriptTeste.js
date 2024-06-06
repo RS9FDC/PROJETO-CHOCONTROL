@@ -29,7 +29,7 @@ confirmAddBtn.addEventListener("click", function() {
   const newDiv = document.createElement("div"); // Cria uma nova div
   
   // Define o conteúdo da div como uma concatenação das duas informações
-  newDiv.innerHTML = "Máquina: " + newContentInput1.value + "<br> Tipo de Chocolate: " + newContentInput2.value ;
+  // newDiv.innerHTML = "Máquina: " + newContentInput1.value + "<br> Tipo de Chocolate: " + newContentInput2.value ;
 //   newDiv.textContent = "Máquina: " + newContentInput1.value +  " Tipo de Chocolate: " + newContentInput2.value;
 
   contentSection.appendChild(newDiv); // Adiciona a div à seção de conteúdo
