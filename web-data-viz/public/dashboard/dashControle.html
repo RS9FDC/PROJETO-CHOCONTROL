@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/styleDashControle.css">
     <link rel="stylesheet" href="../css/style-indexdashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
+    +
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <link
@@ -67,7 +67,7 @@
                 <!-- <img style="border-radius: 30px;" id="foto" src="../assets/usuario.jpg" alt="foto do usuario"> -->
                 <p id="usuario_informacoes">
                     <!-- <span class="descricao"> -->
-                        <span id="NomeVar" style="margin-left: 2rem; font-size: 20px;"></span>
+                    <span id="NomeVar" style="margin-left: 2rem; font-size: 20px;"></span>
                     <!-- </span> -->
                 </p>
 
@@ -87,9 +87,9 @@
     <div id="parteprincipal">
 
         <!-- menu horizontal -->
-        <div id="menucima"  style="margin-top: 2rem; font-size: 30px; margin-left: 3rem;">
+        <div id="menucima" style="margin-top: 2rem; font-size: 30px; margin-left: 3rem;">
             <!-- <main id="main"> -->
-                <span>Olá, <span id="NomeVar2"></span></span>
+            <span>Olá, <span id="NomeVar2"></span></span>
             <!-- </main> -->
 
             <!-- <div id="pesquisa">
@@ -159,7 +159,8 @@
                 </div> -->
             <div id="graficoLinha">
                 <section style="height:30vh; width:30vw; margin-left: 400px;">
-                    <canvas id="lm35Temperatura"></canvas>
+                    <!-- <canvas id="lm35Temperatura"></canvas> -->
+                    <canvas id="myChartCanvas"></canvas>
                 </section>
             </div>
         </div>
@@ -171,112 +172,276 @@
 <script>
     NomeVar.innerHTML = sessionStorage.NOME_USUARIO;
     NomeVar2.innerHTML = sessionStorage.NOME_USUARIO;
-    var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
-    contextoLm35Temperatura.canvas.width = 1000;
-    contextoLm35Temperatura.canvas.height = 500;
-    var lm35Temperatura = new Chart(
-        contextoLm35Temperatura,
-        {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: 'Temperatura',
-                    type: 'line',
-                    borderColor: ['#b17e57'],
-                    backgroundColor: ['#b17e57']
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Temperatura'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 0
-                }
+    let proximaAtualizacao;
+
+    obterDadosGrafico(1);
+
+    // var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
+    // contextoLm35Temperatura.canvas.width = 1000;
+    // contextoLm35Temperatura.canvas.height = 500;
+    // var lm35Temperatura = new Chart(
+    //     contextoLm35Temperatura,
+    //     {
+    //         type: 'line',
+    //         data: {
+    //             datasets: [{
+    //                 label: 'Temperatura',
+    //                 type: 'line',
+    //                 borderColor: ['#b17e57'],
+    //                 backgroundColor: ['#b17e57']
+    //             }]
+    //         },
+    //         options: {
+    //             scales: {
+    //                 xAxes: [{
+    //                     distribution: 'series',
+    //                     ticks: {
+    //                         beginAtZero: true
+    //                     }
+    //                 }],
+    //                 yAxes: [{
+    //                     scaleLabel: {
+    //                         display: true,
+    //                         labelString: 'Temperatura'
+    //                     },
+    //                     ticks: {
+    //                         beginAtZero: true
+    //                     }
+    //                 }]
+    //             },
+    //             animation: {
+    //                 duration: 0
+    //             }
+    //         }
+    //     }
+    // );
+
+
+    // var paginacao = {};
+    // var tempo = {};
+    // function obterDados(grafico, endpoint) {
+    //     var http = new XMLHttpRequest();
+    //     http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+    //     http.send(null);
+    //     var valores = JSON.parse(http.responseText);
+    //     if (paginacao[endpoint] == null) {
+    //         paginacao[endpoint] = 0;
+    //     }
+    //     if (tempo[endpoint] == null) {
+    //         tempo[endpoint] = 0;
+    //     }
+    //     // Exibir à partir do último elemento exibido anteriormente
+    //     var ultimaPaginacao = paginacao[endpoint];
+    //     paginacao[endpoint] = valores.length;
+    //     var valores = valores.slice(ultimaPaginacao);
+    //     valores.forEach((valor) => {
+    //         //Máximo de 60 itens exibidos no gráfico
+    //         if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+    //             grafico.data.labels.shift();
+    //             grafico.data.datasets[0].data.shift();
+    //         }
+
+    //         grafico.data.labels.push(tempo[endpoint]++);
+    //         grafico.data.datasets[0].data.push(parseFloat(valor));
+    //         grafico.update();
+    //     })
+    // }
+
+    // setInterval(() => {
+    //     obterDados(lm35Temperatura, 'lm35/temperatura');
+    // }, 1000);
+
+
+    // const labels = [
+    //     'Abr',
+    //     'Mar',
+    //     'Fev',
+    //     'Jan',
+    // ];
+
+    // const data1 = {
+    //     labels: labels,
+    //     datasets: [{
+    //         label: 'Temperatura acima do ideal',
+    //         backgroundColor: '#8d4e24',
+    //         borderColor: '#8d4e24',
+    //         data: [1, 2, 3, 4, 5, 6],
+    //     },
+    //     ]
+    // };
+
+
+
+    // const config2 = {
+    //     type: 'bar',
+    //     data: data1,
+    //     options: {
+    //         indexAxis: 'y',
+    //     }
+    // };
+
+    // const myChart2 = new Chart(
+    //     document.getElementById('myChart2'),
+    //     config2
+    // );
+
+
+
+
+    // PLOTANDO O GRÁFICO DIRETO COM DADOS DO BD 
+    function obterDadosGrafico(idMaquina) {
+
+        // alterarTitulo(idMaquina)
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idMaquina);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
             }
-        }
-    );
-
-
-    var paginacao = {};
-    var tempo = {};
-    function obterDados(grafico, endpoint) {
-        var http = new XMLHttpRequest();
-        http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
-        http.send(null);
-        var valores = JSON.parse(http.responseText);
-        if (paginacao[endpoint] == null) {
-            paginacao[endpoint] = 0;
-        }
-        if (tempo[endpoint] == null) {
-            tempo[endpoint] = 0;
-        }
-        // Exibir à partir do último elemento exibido anteriormente
-        var ultimaPaginacao = paginacao[endpoint];
-        paginacao[endpoint] = valores.length;
-        var valores = valores.slice(ultimaPaginacao);
-        valores.forEach((valor) => {
-            //Máximo de 60 itens exibidos no gráfico
-            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
-                grafico.data.labels.shift();
-                grafico.data.datasets[0].data.shift();
-            }
-
-            grafico.data.labels.push(tempo[endpoint]++);
-            grafico.data.datasets[0].data.push(parseFloat(valor));
-            grafico.update();
         })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
-    setInterval(() => {
-        obterDados(lm35Temperatura, 'lm35/temperatura');
-    }, 1000);
 
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idMaquina) {
 
-    const labels = [
-        'Abr',
-        'Mar',
-        'Fev',
-        'Jan',
-    ];
+        console.log('iniciando plotagem do gráfico...');
 
-    const data1 = {
-        labels: labels,
-        datasets: [{
-            label: 'Temperatura acima do ideal',
-            backgroundColor: '#8d4e24',
-            borderColor: '#8d4e24',
-            data: [1, 2, 3, 4, 5, 6],
-        },
-        ]
-    };
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
 
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Umidade',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            },
+            {
+                label: 'Temperatura',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(199, 52, 52)',
+                tension: 0.1
+            }]
+        };
 
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
 
-    const config2 = {
-        type: 'bar',
-        data: data1,
-        options: {
-            indexAxis: 'y',
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.momento);
+            // dados.datasets[0].data.push(registro.umidade);
+            dados.datasets[1].data.push(registro.temperatura);
         }
-    };
 
-    const myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas`),
+            config
+        );
+
+        setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 2000);
+    }
+
+
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(idMaquina, dados, myChart) {
+        console.log("Manuela")
+
+
+
+        fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // obterdados(idMaquina);
+                    // alertar(novoRegistro, idMaquina);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idMaquina}`)
+                    // avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].momento == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].momento); // incluir um novo momento
+
+                        // dados.datasets[0].data.shift();  
+                        // apagar o primeiro de umidade
+                        // dados.datasets[0].data.push(novoRegistro[0].umidade); 
+                        // incluir uma nova medida de umidade
+
+                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
 </script>
