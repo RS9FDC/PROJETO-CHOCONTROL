@@ -1,11 +1,8 @@
-
-
-DROP database chocontrol;
 CREATE DATABASE chocontrol;
 USE chocontrol;
 
-CREATE TABLE Empresa(
-	empresaId INT PRIMARY KEY auto_increment
+CREATE TABLE empresa(
+    empresaid INT PRIMARY KEY auto_increment
     ,nome VARCHAR(50) 
     ,telefone CHAR(14)
     ,email VARCHAR(256)
@@ -16,77 +13,65 @@ CREATE TABLE Empresa(
 )auto_increment = 1025;
 
 CREATE TABLE funcionario(
-	idFuncionario INT AUTO_INCREMENT
+    idfuncionario INT AUTO_INCREMENT
     ,nome VARCHAR(50)
     ,senha CHAR(8)
     ,email VARCHAR(256)
-	,foto VARCHAR(800)
-    ,fkEmpresa INT 
-    , FOREIGN KEY (fkEmpresa) REFERENCES Empresa(empresaId)
-    ,PRIMARY KEY (idFuncionario,fkEmpresa)
+    ,foto VARCHAR(800)
+    ,fkempresa INT 
+    , FOREIGN KEY (fkempresa) REFERENCES empresa(empresaid)
+    ,PRIMARY KEY (idfuncionario,fkempresa)
 );
 
 
-CREATE TABLE intervaloTemperatura(
-	idintervaloTemperatura INT PRIMARY KEY AUTO_INCREMENT
-    ,temepraturaMaxima DECIMAL(3,1)
-    ,temperaturaMinima DECIMAL(3,1)
+CREATE TABLE intervalotemperatura(
+    idintervaloiemperatura INT PRIMARY KEY AUTO_INCREMENT
+    ,temepraturamaxima DECIMAL(3,1)
+    ,temperaturaminima DECIMAL(3,1)
 );
 
 
-CREATE TABLE Maquina(
-	idMaquina INT PRIMARY KEY auto_increment
-    ,modeloMaquina VARCHAR(40)
-    ,saborChocolate VARCHAR(30)
-    ,fkEmpresa INT
-    ,fkintervaloTemperatura INT
-    ,FOREIGN KEY (fkEmpresa) REFERENCES Empresa(empresaId)
-    ,FOREIGN KEY (fkIntervaloTemperatura) REFERENCES IntervaloTemperatura(idIntervaloTemperatura)
+CREATE TABLE maquina(
+    idmaquina INT PRIMARY KEY
+    ,modelomaquina VARCHAR(40)
+    ,saborchocolate VARCHAR(30)
+    ,fkempresa INT
+    ,fkintervalotemperatura INT
+    ,FOREIGN KEY (fkempresa) REFERENCES empresa(empresaid)
+    ,FOREIGN KEY (fkintervalotemperatura) REFERENCES intervalotemperatura(idintervaloiemperatura)
 );
     
-CREATE TABLE Sensor(
-		idSensor CHAR(6) PRIMARY KEY
-        ,modeloSensor VARCHAR(20)
-        ,fkMaquina INT
-        ,FOREIGN KEY (fkMaquina)REFERENCES Maquina(idMaquina)
+CREATE TABLE sensor(
+        idsensor INT PRIMARY KEY
+        ,modelosensor VARCHAR(20)
+        ,fkmaquina INT
+        ,FOREIGN KEY (fkmaquina)REFERENCES maquina(idmaquina)
 );
 
 
-
-
-CREATE TABLE Monitoramento (
-	idMonitoramento INT PRIMARY KEY AUTO_INCREMENT 
-	,dtHora DATETIME
+CREATE TABLE monitoramento (
+    idmonitoramento INT PRIMARY KEY AUTO_INCREMENT 
+    ,dthora timestamp not null default current_timestamp  
     ,temperatura DECIMAL(3,1)
-    ,fkSensor CHAR(6)
-    ,FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
+    ,fksensor INT
+    ,FOREIGN KEY (fksensor) REFERENCES sensor(idsensor)
 );
 
 
-INSERT INTO Empresa VALUES (03256841,'Cacau Show','(11)97114-5072','cacaushow@outlook.com','00000000000000','01414-001','2568',NULL);
-SELECT * FROM Empresa;
-SELECT * FROM funcionario; 
+-- alter table Monitoramento modify column dtHora timestamp not null default current_timestamp;
 
-SELECT * FROM Maquina;
--- SELECT PARA A TEMPERATURA 
-SELECT monitoramento.temperatura,  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
-	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina;
-    
--- Maquina Acima da Temperatura ideal
-SELECT monitoramento.temperatura,  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
-	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina
-		WHERE maquina.idMaquina = 'Cholocate Amargo' AND monitoramento.temperatura > 70;
-    
--- Maquina Menor da Temperatura ideal
-SELECT monitoramento.temperatura,  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
-	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina
-		WHERE maquina.idMaquina = 'Cholocate Amargo' AND monitoramento.temperatura < 20;
-        
-        
-SELECT COUNT(monitoramento.temperatura),  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
-	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina
-		WHERE maquina.idMaquina = 'Cholocate Amargo' AND monitoramento.temperatura < 20;
-        
-SELECT COUNT(monitoramento.temperatura),  maquina.saborChocolate, maquina.idMaquina FROM Monitoramento AS monitoramento JOIN Sensor  AS sensor ON sensor.idSensor = monitoramento.idMonitoramento
-	JOIN Maquina AS maquina ON sensor.fkMaquina = maquina.idMaquina
-		WHERE maquina.idMaquina = 'Cholocate Amargo' AND monitoramento.temperatura > 70;
+insert into sensor values (1, 'LM35', 1);
+INSERT INTO empresa VALUES (03256841,'Cacau Show','(11)97114-5072','cacaushow@outlook.com','00000000000000','01414-001','2568',NULL);
+insert into maquina values (1, 'aa', 'branco', '3256841', null);
+insert into monitoramento (fkSensor) values (1);
+
+
+
+select temperatura, dtHora from monitoramento join sensor on idSensor = fkSensor 
+join maquina on fkMaquina = idMaquina
+where idMaquina = 1;
+
+
+
+
+
