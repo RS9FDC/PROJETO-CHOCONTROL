@@ -410,7 +410,66 @@ a{
     height: 300px;
     /* margin: 0 10px; */
     margin: 50px;
-}
+} 
+
+.area-parametros-alerta {
+    /* border: 2px solid pink; */
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #b17e57;
+  }
+  
+  .area-parametros-alerta .titulo-legenda {
+    /* color: white; */
+    font-weight: 600;
+    width: 100%;
+    margin: 10px auto;
+    text-align: center;
+  }
+  
+  .parametros-alerta {
+    display: flex;
+    width: 100%;
+  }
+  
+  .item-regua {
+    flex-grow: 1;
+    width: 20%;
+    text-align: center;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    /* color: white; */
+  }
+  
+  .item-regua p {
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  .item-regua p:nth-child(2) {
+    font-weight: 800;
+  }
+  
+  .chocLeite {
+    background-color: #a7adca;
+  }
+
+  .chocAmargo {
+    background-color: #d75c5c;
+  }
+  
+  .chocBranco {
+    background-color: #d1cda7;
+  }
+  
+
+  
 
 
 
