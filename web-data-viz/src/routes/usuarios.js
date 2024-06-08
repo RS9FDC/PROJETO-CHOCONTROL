@@ -14,6 +14,11 @@ router.post("/cadastrarMaquina", function (req, res) {
 })
 
 
+router.post("/aparecermaquina" , function (req, res){
+    usuarioController.aparecermaquina(req,res)
+})
+
+
 router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });

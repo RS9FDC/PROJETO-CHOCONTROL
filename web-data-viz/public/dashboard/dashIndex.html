@@ -16,7 +16,7 @@
     <title>Chocontrol | Dashboard</title>
 </head>
 
-<body>
+<body onload="aparecermaquina()">
 
     <!-- menu lateral -->
 
@@ -77,8 +77,8 @@
         <!-- menu horizontal -->
         <div id="menucima" style="margin-top: 2rem; font-size: 30px; margin-left: 3rem;">
             <!-- <main id="main"> -->
-                <h1>Olá, <span id="NomeVar2"></span></h1>
-                <!-- <h1 id="bem-vindo" style="font: Antic Didone; font-size: 20px;width: 100%; ">Olá, Fernando.</h1> -->
+            <h1>Olá, <span id="NomeVar2"></span></h1>
+            <!-- <h1 id="bem-vindo" style="font: Antic Didone; font-size: 20px;width: 100%; ">Olá, Fernando.</h1> -->
             <!-- </main> -->
 
             <!-- <div id="pesquisa">
@@ -118,64 +118,12 @@
         <div class="dash">
             <h1 class="title">Avisos!</h1>
 
-            <div class="container">
-                <div class="card">
-                    <a href="dashControle.html">
-                        <p style="color: #BF1700;">Leva 1 em estado crítico</p>
-                    </a>
-                    <p>Máquina: 6421350</p>
-                    <p>Tipo de chocolate: Branco</p>
-                    <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: 97°C</p>
-                </div>
+            <div class="container" id="container">
 
 
-
-                <div class="card">
-                    <a href="dashControle.html">
-                        <p style="color: #BF1700;">Leva 2 em estado crítico</p>
-                    </a>
-                    <p>Máquina: 0134276</p>
-                    <p>Tipo de chocolate: Ao leite</p>
-                    <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: 85°C</p>
-                </div>
+              
 
 
-                <div class="card">
-                    <a href="dashControle.html">
-                        <p style="color: #BF1700;">Leva 3 em estado crítico</p>
-                    </a>
-                    <p>Máquina: 78855</p>
-                    <p>Tipo de chocolate: Branco</p>
-                    <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: 102°C</p>
-                </div>
-
-                <!-- <div class="card">
-                    <p style="color: #BF1700;">Leva 4 em estado crítico</p>
-                    <p>Máquina: 5420350</p>
-                    <p>Tipo de chocolate: Ao leite</p>
-                    <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: 23°C</p>
-                </div>
-
-                <div class="card">
-                    <p style="color: #E48F1E;">Leva 5 em estado de alerta</p>
-                    <p>Máquina: 78498952</p>
-                    <p>Tipo de chocolate: Branco</p>
-                    <p style="color: #E48F1E; font-size: 15px;">Temperatura da leva: 40.7°C</p>
-                </div>
-
-                <div class="card">
-                    <p style="color: #E48F1E;">Leva 6 em estado de alerta</p>
-                    <p>Máquina: 55984852</p>
-                    <p>Tipo de chocolate: Amargo</p>
-                    <p style="color: #E48F1E; font-size: 15px;">Temperatura da leva: 78.5°C</p>
-                </div>
-
-                <div class="card">
-                    <p style="color: #E48F1E;">Leva 7 em estado de alerta</p>
-                    <p>Máquina: 1236588</p>
-                    <p>Tipo de chocolate: Ao leite</p>
-                    <p style="color: #E48F1E; font-size: 15px; margin-top: 3%;">Temperatura da leva: 79°C</p>
-                </div> -->
 
                 <div class="card">
                     <p>Cadastrar Máquina</p>
@@ -276,39 +224,89 @@
             alert('Preencha os campos')
         } else {
             fetch("/usuarios/cadastrarMaquina", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        tipoCholocateServer: VartipoChocolate,
-        modeloMaquinaServer: VarmodeloMaquina,
-        fkEmpresa: VarfkEmpresa
-        
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-        
-        if (resposta.ok) {
-       
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    tipoCholocateServer: VartipoChocolate,
+                    modeloMaquinaServer: VarmodeloMaquina,
+                    fkEmpresa: VarfkEmpresa
 
-         alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        
-      });
+                    if (resposta.ok) {
 
-    return false;
-  }
+
+                        alert("cadastro da maquina realizado com sucesso");
+
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+
+                });
+
 
         }
-    
+
+
+        aparecermaquina()
+        return false;
+
+    }
+
+    function aparecermaquina() {
+
+        var VarfkEmpresa = sessionStorage.FK_EMPRESA
+
+        fetch("/usuarios/aparecermaquina", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                fkEmpresaServer: VarfkEmpresa
+
+            })
+        })
+            .then(function (resposta) {
+                console.log("resposta:", resposta);
+                if (resposta.ok) {
+                  
+
+                    resposta.json().then((maquinas) => {
+                        maquinas.forEach(maquina => {
+
+                            container.innerHTML += ` <div class="card">
+                                <a href="dashControle.html"> <p style="color: #BF1700;">Leva ${maquina.idmaquina} em estado crítico</p> </a>
+                                <p>Máquina: ${maquina.modelomaquina} </p>
+                                <p>Tipo de chocolate: ${maquina.saborchocolate} </p>
+                                <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: ${maquina.temperatura}°C</p>
+                             </div>
+                    `
+
+                        });
+                    })
+
+
+                } else {
+                    throw "não apareceu :("
+                }
+
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        return false
+
+    }
+
 </script>
