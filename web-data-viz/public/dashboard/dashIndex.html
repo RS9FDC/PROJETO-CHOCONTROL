@@ -159,19 +159,16 @@
         </div>
 
 
-        <!-- <div class="dash">
-            <h1 class="title">Produções em Andamento!</h1>
+        <div class="dash">
 
             <div class="container">
-                <div class="card">
-                    <p style="font-family: 'Antic Didone'; font-weight: 400; font-size: 25px;">Chocolate Branco</p>
-                    <p style="font-size: 15px; margin-top: 1rem;">Máquina: 789</p>
-                    <p style="font-size: 15px;">Local de Produção:</p>
-                    <p style="font-size: 15px;">Prazo de Entrega</p>
-                    <p style="font-size:10px; display: flex; justify-content: end; margin-top: 1rem;">ver mais</p>
+                <a href="dashControle.html" style="text-decoration: none; color: black;"><div class="card">
+                    <p style="font-family: 'Antic Didone'; font-weight: 400; font-size: 25px;">Leva 1 em estado crítico</p></a>
+                    <p style="font-size: 15px; margin-top: 1rem;">Máquina: 15</p>
+                    <p style="font-size: 15px;">Tipo de chocolate: branco</p>
                 </div>
 
-                <div class="card">
+                <!-- <div class="card">
                     <p style="font-family: 'Antic Didone'; font-weight: 400; font-size: 25px;">Chocolate Amargo</p>
                     <p style="font-size: 15px; margin-top: 1rem;">Máquina: 789</p>
                     <p style="font-size: 15px;">Local de Produção:</p>
@@ -186,10 +183,10 @@
                     <p style="font-size: 15px;">Local de Produção:</p>
                     <p style="font-size: 15px;">Prazo de Entrega</p>
                     <p style="font-size:10px; display: flex; justify-content: end; margin-top: 1rem;">ver mais</p>
-                </div>
+                </div> -->
             </div>
         </div>
-    </div> -->
+    </div>
 
 
 
@@ -219,100 +216,100 @@
     NomeVar.innerHTML = sessionStorage.NOME_USUARIO;
     NomeVar2.innerHTML = sessionStorage.NOME_USUARIO;
 
-    function cadastrarmaquina() {
-        var VartipoChocolate = select_tipochocolate.value;
-        var VarmodeloMaquina = modeloMaquina.value
-        var VarfkEmpresa = sessionStorage.FK_EMPRESA
+    // function cadastrarmaquina() {
+    //     var VartipoChocolate = select_tipochocolate.value;
+    //     var VarmodeloMaquina = modeloMaquina.value
+    //     var VarfkEmpresa = sessionStorage.FK_EMPRESA
 
 
-        if (VartipoChocolate == '' || VarmodeloMaquina == '') {
-            alert('Preencha os campos')
-        } else {
-            fetch("/usuarios/cadastrarMaquina", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    tipoCholocateServer: VartipoChocolate,
-                    modeloMaquinaServer: VarmodeloMaquina,
-                    fkEmpresa: VarfkEmpresa
+    //     if (VartipoChocolate == '' || VarmodeloMaquina == '') {
+    //         alert('Preencha os campos')
+    //     } else {
+    //         fetch("/usuarios/cadastrarMaquina", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 // crie um atributo que recebe o valor recuperado aqui
+    //                 // Agora vá para o arquivo routes/usuario.js
+    //                 tipoCholocateServer: VartipoChocolate,
+    //                 modeloMaquinaServer: VarmodeloMaquina,
+    //                 fkEmpresa: VarfkEmpresa
 
-                }),
-            })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
+    //             }),
+    //         })
+    //             .then(function (resposta) {
+    //                 console.log("resposta: ", resposta);
 
-                    if (resposta.ok) {
-
-
-                        alert("cadastro da maquina realizado com sucesso");
-                        aparecermaquina();
-
-                    } else {
-                        throw "Houve um erro ao tentar realizar o cadastro!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-
-                });
+    //                 if (resposta.ok) {
 
 
-        }
+    //                     alert("cadastro da maquina realizado com sucesso");
+    //                     aparecermaquina();
+
+    //                 } else {
+    //                     throw "Houve um erro ao tentar realizar o cadastro!";
+    //                 }
+    //             })
+    //             .catch(function (resposta) {
+    //                 console.log(`#ERRO: ${resposta}`);
+
+    //             });
+
+
+    //     }
 
 
         
-        return false;
+    //     return false;
 
-    }
+    // }
 
-    function aparecermaquina() {
+    // function aparecermaquina() {
 
-        var VarfkEmpresa = sessionStorage.FK_EMPRESA
+    //     var VarfkEmpresa = sessionStorage.FK_EMPRESA
 
-        fetch("/usuarios/aparecermaquina", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                fkEmpresaServer: VarfkEmpresa
+    //     fetch("/usuarios/aparecermaquina", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //             fkEmpresaServer: VarfkEmpresa
 
-            })
-        })
-            .then(function (resposta) {
-                console.log("resposta:", resposta);
-                if (resposta.ok) {
+    //         })
+    //     })
+    //         .then(function (resposta) {
+    //             console.log("resposta:", resposta);
+    //             if (resposta.ok) {
                   
 
-                    resposta.json().then((maquinas) => {
-                        maquinas.forEach(maquina => {
+    //                 resposta.json().then((maquinas) => {
+    //                     maquinas.forEach(maquina => {
 
-                            container.innerHTML += ` <div class="card">
-                                <a href="dashControle.html"> <p style="color: #BF1700;">Leva ${maquina.idmaquina} em estado crítico</p> </a>
-                                <p>Máquina: ${maquina.modelomaquina} </p>
-                                <p>Tipo de chocolate: ${maquina.saborchocolate} </p>
-                                <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: ${maquina.temperatura}°C</p>
-                             </div>
-                    `
+    //                         container.innerHTML += ` <div class="card">
+    //                             <a href="dashControle.html"> <p style="color: #BF1700;">Leva ${maquina.idmaquina} em estado crítico</p> </a>
+    //                             <p>Máquina: ${maquina.modelomaquina} </p>
+    //                             <p>Tipo de chocolate: ${maquina.saborchocolate} </p>
+    //                             <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: ${maquina.temperatura}°C</p>
+    //                          </div>
+    //                 `
 
-                        });
-                    })
+    //                     });
+    //                 })
 
 
-                } else {
-                    throw "não apareceu :("
-                }
+    //             } else {
+    //                 throw "não apareceu :("
+    //             }
 
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-        return false
+    //         })
+    //         .catch(function (resposta) {
+    //             console.log(`#ERRO: ${resposta}`);
+    //         });
+    //     return false
 
-    }
+    // }
 
 </script>
