@@ -124,18 +124,18 @@
               
 
 
-
+<!-- 
                 <div class="card">
-                    <p>Cadastrar Máquina</p>
+                    <p>Cadastrar Máquina</p> -->
 
-                    <div id="contentSection">
+                    <!-- <div id="contentSection"> -->
                         <!-- Aqui é onde as novas divs serão adicionadas -->
-                    </div>
+                    <!-- </div> -->
 
-                    <button id="addContentBtn">Cadastrar Maquina</button>
+                    <!-- <button id="addContentBtn">Cadastrar Maquina</button> -->
 
                     <!-- Modal para adicionar novo conteúdo (opcional) -->
-                    <div id="myModal" class="modal">
+                    <!-- <div id="myModal" class="modal">
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <label for="newContentNumMaquina">Modelo da máquina:</label>
@@ -156,7 +156,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->
 
 
         <!-- <div class="dash">
@@ -269,50 +269,50 @@
 
     }
 
-    function aparecermaquina() {
+    // function aparecermaquina() {
 
-        var VarfkEmpresa = sessionStorage.FK_EMPRESA
+    //     var VarfkEmpresa = sessionStorage.FK_EMPRESA
 
-        fetch("/usuarios/aparecermaquina", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                fkEmpresaServer: VarfkEmpresa
+    //     fetch("/usuarios/aparecermaquina", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //             fkEmpresaServer: VarfkEmpresa
 
-            })
-        })
-            .then(function (resposta) {
-                console.log("resposta:", resposta);
-                if (resposta.ok) {
+    //         })
+    //     })
+    //         .then(function (resposta) {
+    //             console.log("resposta:", resposta);
+    //             if (resposta.ok) {
                   
 
-                    resposta.json().then((maquinas) => {
-                        maquinas.forEach(maquina => {
+    //                 resposta.json().then((maquinas) => {
+    //                     maquinas.forEach(maquina => {
 
-                            container.innerHTML += ` <div class="card">
-                                <a href="dashControle.html"> <p style="color: #BF1700;">Leva ${maquina.idmaquina} em estado crítico</p> </a>
-                                <p>Máquina: ${maquina.modelomaquina} </p>
-                                <p>Tipo de chocolate: ${maquina.saborchocolate} </p>
-                                <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: ${maquina.temperatura}°C</p>
-                             </div>
-                    `
+    //                         container.innerHTML += ` <div class="card">
+    //                             <a href="dashControle.html"> <p style="color: #BF1700;">Leva ${maquina.idmaquina} em estado crítico</p> </a>
+    //                             <p>Máquina: ${maquina.modelomaquina} </p>
+    //                             <p>Tipo de chocolate: ${maquina.saborchocolate} </p>
+    //                             <p style="color: #BF1700; font-size: 15px;">Temperatura da leva: ${maquina.temperatura}°C</p>
+    //                          </div>
+    //                 `
 
-                        });
-                    })
+    //                     });
+    //                 })
 
 
-                } else {
-                    throw "não apareceu :("
-                }
+    //             } else {
+    //                 throw "não apareceu :("
+    //             }
 
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-        return false
+    //         })
+    //         .catch(function (resposta) {
+    //             console.log(`#ERRO: ${resposta}`);
+    //         });
+    //     return false
 
-    }
+    // }
 
 </script>
