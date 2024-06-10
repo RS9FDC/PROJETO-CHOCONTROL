@@ -128,7 +128,7 @@
 
 
             <div class="dash">
-                
+
                 <div class="area-parametros-alerta">
                     <p class="titulo-legenda">
                         Temperatura máxima e mínima de acordo com o tipo de chocolate
@@ -149,45 +149,45 @@
                     </div>
                 </div>
 
-            <div class="container">
-                <!-- <div class="cards" style="margin-left: 2%;">
+                <div class="container">
+                    <!-- <div class="cards" style="margin-left: 2%;">
                     <p >Responsável da Leva:</p>
                     <p>Fernando Brandão</p>
                 </div> -->
 
-                <div class="cards" style="margin-left: 115px;">
-                    <p>Temperatura atual:</p>
-                    <p style="color: #BF1700; font-size: 25px;">97°C</p>
+                    <div class="cards" style="margin-left: 115px;">
+                        <p>Temperatura atual:</p>
+                        <div id="tempAtual" style="font-size: 25px;">97°C</div>
+                    </div>
+
+                    <div class="cards">
+                        <p>Estado da leva:</p>
+                        <div id="estadoatt" style="font-size: 25px;">Critico</div>
+                    </div>
+
+                    <div class="cards">
+                        <p>Tipo de chocolate:</p>
+                        <div id="tipoChoco" style="font-size: 25px;">Branco</div>
+                    </div>
+
+
+
                 </div>
-
-                <div class="cards">
-                    <p>Estado da leva:</p>
-                    <p style="color: #BF1700; font-size: 25px;">Critico</p>
-                </div>
-
-                <div class="cards">
-                    <p>Tipo de chocolate:</p>
-                    <p style="color: #BF1700; font-size: 25px;">Branco</p>
-                </div>
-
-
-
             </div>
-        </div>
-        <!-- onde o grafico é colocado no html -->
+            <!-- onde o grafico é colocado no html -->
 
-        <div class="graficosContainer">
-            <!-- <div class="graficoColuna">
+            <div class="graficosContainer">
+                <!-- <div class="graficoColuna">
                     <canvas id="myChart2" style="position: relative; height:30vh; width:30vw"></canvas>
                 </div> -->
-            <div id="graficoLinha">
-                <section style="height:30vh; width:30vw; margin-left: 400px;">
-                    <!-- <canvas id="lm35Temperatura"></canvas> -->
-                    <canvas id="myChartCanvas"></canvas>
-                </section>
+                <div id="graficoLinha">
+                    <section style="height:30vh; width:30vw; margin-left: 400px;">
+                        <!-- <canvas id="lm35Temperatura"></canvas> -->
+                        <canvas id="myChartCanvas"></canvas>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
 
 </body>
 
@@ -353,21 +353,21 @@
         let dados = {
             labels: labels,
             datasets: [
-            //     {
-            //         label: 'Temperatura',
-            //     data: [],
-            //     fill: false,
-            //     borderColor: 'rgb(199, 52, 52)',
-            //     tension: 0.1
-            // },
-            {
-                label: 'Temperatura',
-                data: [],
-                fill: false,
-                borderColor: '#b17e57',
-                tension: 0.1
-            }
-        ]
+                //     {
+                //         label: 'Temperatura',
+                //     data: [],
+                //     fill: false,
+                //     borderColor: 'rgb(199, 52, 52)',
+                //     tension: 0.1
+                // },
+                {
+                    label: 'Temperatura',
+                    data: [],
+                    fill: false,
+                    borderColor: '#b17e57',
+                    tension: 0.1
+                }
+            ]
         };
 
         console.log('----------------------------------------------')
@@ -412,7 +412,7 @@
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idMaquina, dados, myChart) {
-        console.log("Manuela")
+
 
 
 
@@ -439,6 +439,154 @@
                         console.log("Horário do último dado capturado:")
                         console.log(dados.labels[dados.labels.length - 1])
                         console.log("---------------------------------------------------------------")
+
+
+
+
+
+                        // TENTANDO DEFINIR O VALOR DOS CARDS
+
+                        let qtdtemp = novoRegistro.length;
+                        let tempAtualATT = novoRegistro[qtdtemp - 1].temperatura;
+
+
+                        // Se for chocolate ao leite:
+
+                        if (tempAtualATT >= 65 || tempAtualATT <= 45) {
+
+                            document.getElementById("tempAtual").style.color = "#BF1700";
+                            tempAtual.innerHTML = `${tempAtualATT}°C`
+
+                            document.getElementById("estadoatt").style.color = "#BF1700";
+                            estadoatt.innerHTML = 'Crítico'
+
+
+                        }
+
+                        if ((tempAtualATT < 65 && tempAtualATT >= 60) || (tempAtualATT > 45 && tempAtualATT <= 50)) {
+
+                            document.getElementById("tempAtual").style.color = "#FDDF36";
+                            tempAtual.innerHTML = `${tempAtualATT}°C`
+
+                            document.getElementById("estadoatt").style.color = "#FDDF36";
+                            estadoatt.innerHTML = 'Alerta'
+
+
+                        }
+
+                        if (tempAtualATT < 60 && tempAtualATT > 40) {
+
+                            document.getElementById("tempAtual").style.color = "#006400";
+                            tempAtual.innerHTML = `${tempAtualATT}°C`
+
+                            document.getElementById("estadoatt").style.color = "#006400";
+                            estadoatt.innerHTML = 'Estável'
+
+                        }
+
+
+
+
+
+
+
+
+
+
+                        // Se for chocolate amargo:
+
+                        // if (tempAtualATT > 58 || tempAtualATT < 52) {
+
+                        //     document.getElementById("tempAtual").style.color = "#BF1700";
+                        //     tempAtual.innerHTML = `${tempAtualATT}°C`
+
+                        //     document.getElementById("estadoatt").style.color = "#BF1700";
+                        //     estadoatt.innerHTML = 'Crítico'
+
+
+                        // }
+
+                        // if ((tempAtualATT < 57 && tempAtualATT > 59) || (tempAtualATT > 51 && tempAtualATT < 53)) {
+
+                        //     document.getElementById("tempAtual").style.color = "#FDDF36";
+                        //     tempAtual.innerHTML = `${tempAtualATT}°C`
+
+                        //     document.getElementById("estadoatt").style.color = "#FDDF36";
+                        //     estadoatt.innerHTML = 'Alerta'
+
+
+                        // }
+
+                        // if (tempAtualATT > 52 && tempAtualATT < 58) {
+
+                        //     document.getElementById("tempAtual").style.color = "#006400";
+                        //     tempAtual.innerHTML = `${tempAtualATT}°C`
+
+                        //     document.getElementById("estadoatt").style.color = "#006400";
+                        //     estadoatt.innerHTML = 'Estável'
+
+                        // }
+
+
+
+
+
+
+                        // Se for chocolate branco:
+
+                        // if (tempAtualATT > 58 || tempAtualATT < 52) {
+
+                        //     document.getElementById("tempAtual").style.color = "#BF1700";
+                        //     tempAtual.innerHTML = `${tempAtualATT}°C`
+
+                        //     document.getElementById("estadoatt").style.color = "#BF1700";
+                        //     estadoatt.innerHTML = 'Crítico'
+
+
+                        // }
+
+                        // if ((tempAtualATT < 57 && tempAtualATT > 59) || (tempAtualATT > 51 && tempAtualATT < 53)) {
+
+                        //     document.getElementById("tempAtual").style.color = "#FDDF36";
+                        //     tempAtual.innerHTML = `${tempAtualATT}°C`
+
+                        //     document.getElementById("estadoatt").style.color = "#FDDF36";
+                        //     estadoatt.innerHTML = 'Alerta'
+
+
+                        // }
+
+                        // if (tempAtualATT > 52 && tempAtualATT < 58) {
+
+                        //     document.getElementById("tempAtual").style.color = "#006400";
+                        //     tempAtual.innerHTML = `${tempAtualATT}°C`
+
+                        //     document.getElementById("estadoatt").style.color = "#006400";
+                        //     estadoatt.innerHTML = 'Estável'
+
+                        // }
+
+
+
+
+
+
+
+
+
+                        //    FIM DA TENTATIVA DE DEFINIR O VALOR DOS CARDS
+
+
+
+
+
+
+
+
+
+
+
+
                     } else {
                         // tirando e colocando valores no gráfico
                         dados.labels.shift(); // apagar o primeiro
@@ -468,9 +616,9 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
-            if(temperatura >= 20){
-                alert("Acima");
-            }
+        if (temperatura >= 20) {
+            alert("Acima");
+        }
 
     }
 </script>
