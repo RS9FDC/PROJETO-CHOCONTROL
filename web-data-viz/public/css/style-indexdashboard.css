@@ -275,7 +275,10 @@ a{
   }
   
   .modal-content {
-    background-color: #763737;
+    /* background-color: #763737; */
+    background: linear-gradient(to bottom, #5c230c, #251104);
+
+
      /* cor do modal */
     margin: 15% auto;
     padding: 20px;
@@ -284,8 +287,33 @@ a{
     height: 40%;
     display: flex;
     border-radius: 10px;
+    color: white;
     /* flex-direction: column;
     align-items: center; */
+  }
+
+
+  .modal-content input{
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .modal-content select{
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .modal-content button{
+    margin-top: 25px;
+    margin-left: 40%;
+    height: 40px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
   }
   
   .close {
