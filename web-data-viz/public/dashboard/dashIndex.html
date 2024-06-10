@@ -16,7 +16,7 @@
     <title>Chocontrol | Dashboard</title>
 </head>
 
-<body onload="aparecermaquina()">
+<body >
 
     <!-- menu lateral -->
 
@@ -159,7 +159,7 @@
         </div>
 
 
-        <div class="dash">
+        <!-- <div class="dash">
             <h1 class="title">Produções em Andamento!</h1>
 
             <div class="container">
@@ -189,7 +189,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -203,16 +203,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script>
-        NomeVar.innerHTML = sessionStorage.NOME_USUARIO;
-        NomeVar2.innerHTML = sessionStorage.NOME_USUARIO;
-        // var NomeVar.innerHTML = sessionStorage.NOME_USUARIO;
-    </script>
+        <script>
+            // Esperar até que a página esteja completamente carregada
+            document.addEventListener("DOMContentLoaded", function() {
+                // Chamar a função após o carregamento da página
+                aparecermaquina();
+            });
+        </script>
+    
 </body>
 
 </html>
 
 <script>
+    NomeVar.innerHTML = sessionStorage.NOME_USUARIO;
+    NomeVar2.innerHTML = sessionStorage.NOME_USUARIO;
 
     function cadastrarmaquina() {
         var VartipoChocolate = select_tipochocolate.value;
