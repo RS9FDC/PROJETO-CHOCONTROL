@@ -157,17 +157,17 @@
 
                     <div class="cards" style="margin-left: 115px;">
                         <p>Temperatura atual:</p>
-                        <div id="tempAtual" style="font-size: 25px;">97°C</div>
+                        <div id="tempAtual" style="font-size: 25px;"> </div>
                     </div>
 
                     <div class="cards">
                         <p>Estado da leva:</p>
-                        <div id="estadoatt" style="font-size: 25px;">Critico</div>
+                        <div id="estadoatt" style="font-size: 25px;"> </div>
                     </div>
 
                     <div class="cards">
                         <p>Tipo de chocolate:</p>
-                        <div id="tipoChoco" style="font-size: 25px;">Branco</div>
+                        <div id="tipoChoco" style="font-size: 25px;">Leite</div>
                     </div>
 
 
@@ -459,6 +459,7 @@
 
                             document.getElementById("estadoatt").style.color = "#BF1700";
                             estadoatt.innerHTML = 'Crítico'
+                            // alert("Leva em estado crítico");
 
 
                         }
@@ -470,6 +471,7 @@
 
                             document.getElementById("estadoatt").style.color = "#FDDF36";
                             estadoatt.innerHTML = 'Alerta'
+                            alert("Leva em estado de alerta");
 
 
                         }

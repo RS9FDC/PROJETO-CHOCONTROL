@@ -29,11 +29,11 @@ const serial = async (
         {
             // altere!
             // Credenciais do banco de dados
-            host: 'localhost',
-            user: 'root',
-            password: 'manu',
+            host: '10.18.33.222',
+            user: 'aluno',
+            password: 'Sptech#2024',
             database: 'chocontrol',
-            port: 3306
+            port: 3307
         }
     ).promise();
 
